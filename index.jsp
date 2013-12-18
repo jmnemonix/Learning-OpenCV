@@ -67,6 +67,7 @@
 <% } %>
 
 <div id="topbar">
+<div id="snavi"><a href="index.jsp?p=home">Home</a> <a href="index.jsp?p=katalog">Katalog</a></div>
 <div id="logbox">
 <%
 	if(istEingeloggt != "true")
