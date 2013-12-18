@@ -1,3 +1,12 @@
+/*
+
+	DB Setup
+	========
+	Datenbanken einmal einrichten!
+
+*/
+// TODO: das teil hier in eine JSP packen
+
 import java.io.*;
 import java.sql.*;
 
@@ -23,7 +32,22 @@ public class DBSetup{
 
 // Connection zum DB-Server eroeffnen
 		try{
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dwNN", "dwNN", "****");
+			
+			
+			try {
+				BufferedReader in = new BufferedReader(new FileReader("../../../dbsetup.txt")); // Textdatei von "/public_html/WEB-INF/classes" aus gesehen
+				String zeile = null;
+				String usr  = in.readLine();
+				String pswd = in.readLine(); // ACHTUNG DATEI MUSS MINDESTENS ZWEI ZEILEN HABEN --- SONST EXCEPTION!
+				
+				
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+usr, usr, pswd);
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
 
 //Jetzt einen SQL-Befehl vorbereiten
 			Statement st = con.createStatement();  //(Noch) leerer SQL-Befehl
@@ -36,8 +60,6 @@ public class DBSetup{
 // Jetzt normales SQL-Skript, aber innerhalb des Servlets
 			st.executeUpdate("create table Benutzer(name char(11), nr int)");
 			st.executeUpdate("insert into tel values ('Hugo',4444)");
-			st.executeUpdate("insert into tel values ('Hajo',5555)");
-			st.executeUpdate("insert into tel values ('Maxi',7777)");
 			st.executeUpdate("insert into tel values ('Mini',4444)");
 //Dynamisch eingegebene Daten
 			st.executeUpdate("insert into tel values ('"+telname+"',"+telnr+")");
