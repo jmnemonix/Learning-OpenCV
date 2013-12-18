@@ -6,7 +6,7 @@ String jspTitle = "Auf Wiedersehen!";
 <HTML>
 <HEAD>
 	<TITLE><%=jspTitle%></TITLE>
-	<meta http-equiv="refresh" content="1; URL=http://praxi.mt.haw-hamburg.de/~dw54/">
+	<meta http-equiv="refresh" content="0; URL=http://praxi.mt.haw-hamburg.de/~dw54/">
 </HEAD>
 <BODY>
 <h2>Auf Wiedersehen</h2>
