@@ -24,18 +24,8 @@
 	
 	
 	/* =============== DEBUG MODE =============== */
-//	String tmpDBG = request.getParameter("dbg");
-	
-//	if(tmpDBG.equals("on")) session.setAttribute("dbgMode", "ja");		// DebugMode ON
-//	else session.setAttribute("dbgMode", "nein");						// Debugmode OFF
-	
-//	String debugMode = (String) session.getAttribute("dbgMode");
-	
-	boolean debug = false;
-	
-//	if(debugMode.equals("ja")) debug = true; 
-	
-//	if(debug == true) String jSessionID = (String) session.getId();
+
+	boolean debug = true;
 	
 	/* =============== WELCHE SEITE =============== */
 	
