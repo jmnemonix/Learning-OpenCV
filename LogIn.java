@@ -24,8 +24,7 @@ public class LogIn extends HttpServlet{
 		String email = req.getParameter("email");
 		String pswd = req.getParameter("pswd");
 		
-
-//DB-Treiber einbinden
+		
 		try{
 			Class.forName("org.gjt.mm.mysql.Driver");  //Da sind die Treiber
 		}
@@ -33,31 +32,17 @@ public class LogIn extends HttpServlet{
 			out.println("DB-Treiber nicht da!");
 		}
 
-// Connection zum DB-Server eroeffnen
 		try{
 			String sqlUsr  = "dw54";
 			String sqlPswd = "";
 			
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
 
-//Jetzt einen SQL-Befehl vorbereiten
-			Statement st = con.createStatement();  //(Noch) leerer SQL-Befehl
+			Statement st = con.createStatement();
 
-//Response Webseite aufbauen
-			//out.println("<html><head><title>Login Test</title></head>");
-			//out.println("<body>Login Test<hr><br><br><br>");
-			
-			//out.println(" <br>eingaben email: "+email+" und password: ("+pswd+") <br>");
-			//out.println("<form method='get' action = 'http://praxi.mt.haw-hamburg.de/~dw54/servlet/LogIn'>Login: <input type='email' name='email'><input type='password' name='pswd'><input type='submit' value='Submit' name='absenden'></form> ");
-			
-			
-			//String queryString = "SELECT * FROM benutzer WHERE email LIKE '"+email+"'";
-			//out.println(queryString);
 			
 			ResultSet rs = st.executeQuery("SELECT * FROM benutzer WHERE email LIKE '"+email+"'");
-			//ResultSet rs = st.executeQuery(queryString);
 
-//Hier die Cursor-Schleife
 			while(rs.next()){
 				String oid = rs.getString("id");
 				String oname = rs.getString("name");
@@ -84,8 +69,6 @@ public class LogIn extends HttpServlet{
 				}
 			}
 			
-			
-			//out.println("<hr> </body> </html>");
 			st.close();
 			con.close();
 		}
