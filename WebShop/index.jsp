@@ -34,6 +34,10 @@
 	
 	String tmpPage = request.getParameter("p");
 	String myPage;
+
+	public String ware(String ware){
+		retrun "ware ist "+ware;
+	}
 	
 	if(tmpPage == null) myPage = "home";
 	else myPage = tmpPage;
@@ -41,7 +45,8 @@
 	if(myPage.equals("home"))			h1Title = "Home";
 	else if(myPage.equals("wagen"))		h1Title = "Einkaufswagen";
 	else if(myPage.equals("reg"))		h1Title = "Registrieren";
-	else if(myPage.equals("katalog"))	h1Title = "Katalog";
+	else if(myPage.equals("katalog"))	h1Title = "Katalog";		// TODO: Warengruppen
+	else if(myPage.equals("ware"))		h1Title = ware("ware");  // TODO: 
 	else if(myPage.equals("checkout"))	h1Title = "Bezahlen";
 	else if(myPage.equals("err01"))		h1Title = "Falscher Login";
 	else								h1Title = "Fehler";

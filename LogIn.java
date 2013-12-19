@@ -1,6 +1,6 @@
 /*
 
-LogIn Class
+Login Management
 
 
 */
@@ -13,9 +13,11 @@ import javax.servlet.http.*;
 
 public class LogIn extends HttpServlet{
 
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-	// TODO: in POST Methode umwandeln
-	
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		
+		String sqlUsr  = "dw54";
+		String sqlPswd = "";
+
 		HttpSession session = req.getSession();
 	
 		res.setContentType("text/html");
@@ -26,15 +28,13 @@ public class LogIn extends HttpServlet{
 		
 		
 		try{
-			Class.forName("org.gjt.mm.mysql.Driver");  //Da sind die Treiber
+			Class.forName("org.gjt.mm.mysql.Driver");
 		}
 		catch (ClassNotFoundException e){
 			out.println("DB-Treiber nicht da!");
 		}
 
 		try{
-			String sqlUsr  = "dw54";
-			String sqlPswd = "";
 			
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
 
@@ -49,7 +49,6 @@ public class LogIn extends HttpServlet{
 				String oemail = rs.getString("email");
 				String opasswort = rs.getString("passwort");
 				String orolle = rs.getString("rolle");
-				out.println("<br>"+oid+" Name: "+oname+" EMail: "+oemail+" PSWD: ("+opasswort+") Rolle: "+orolle+"<br><br>");
 				
 				
 				if((oemail.equals(email))&&(opasswort.equals(pswd))){
@@ -76,7 +75,7 @@ public class LogIn extends HttpServlet{
 			out.println(" MySQL Exception: " + e.getMessage());
 		}
 	}
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-		doGet(req,res);
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p='err01'" );
 	}
 }
