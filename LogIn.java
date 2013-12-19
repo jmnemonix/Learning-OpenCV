@@ -17,6 +17,8 @@ public class LogIn extends HttpServlet{
 		res.setContentType("text/html");
 		PrintWriter out = res.getWriter();
 
+		String email = req.getParameter("email");
+		String pswd = req.getParameter("pswd");
 		
 
 //DB-Treiber einbinden
@@ -52,7 +54,10 @@ public class LogIn extends HttpServlet{
 			out.println("<body>Login Test<hr><br>");
 
 //ResultSet mit Cursor bearbeiten und ausgeben
-			ResultSet rs = st.executeQuery("select * from benutzer");
+			String queryString = "SELECT * FROM benutzer WHERE email LIKE '"+email+"'";
+			out.println(queryString);
+
+			ResultSet rs = st.executeQuery(queryString);
 
 //Hier die Cursor-Schleife
 			while(rs.next()){
