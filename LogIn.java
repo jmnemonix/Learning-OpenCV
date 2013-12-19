@@ -14,6 +14,10 @@ import javax.servlet.http.*;
 public class LogIn extends HttpServlet{
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+	// TODO: in POST Methode umwandeln
+	
+		HttpSession session = req.getSession();
+	
 		res.setContentType("text/html");
 		PrintWriter out = res.getWriter();
 
@@ -31,18 +35,8 @@ public class LogIn extends HttpServlet{
 
 // Connection zum DB-Server eroeffnen
 		try{
-			
-
-			try {
-				BufferedReader in = new BufferedReader(new FileReader("../../../dbsetup.txt")); // Textdatei von "/public_html/WEB-INF/classes" aus gesehen
-				String zeile = null;
-				String sqlUsr  = in.readLine();
-				String sqlPswd = in.readLine(); // ACHTUNG DATEI MUSS MINDESTENS ZWEI ZEILEN HABEN --- SONST EXCEPTION!
-
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
+			String sqlUsr  = "dw54";
+			String sqlPswd = "";
 			
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
 
@@ -50,25 +44,48 @@ public class LogIn extends HttpServlet{
 			Statement st = con.createStatement();  //(Noch) leerer SQL-Befehl
 
 //Response Webseite aufbauen
-			out.println("<html><head><title>Login Test</title></head>");
-			out.println("<body>Login Test<hr><br>");
-
-//ResultSet mit Cursor bearbeiten und ausgeben
-			String queryString = "SELECT * FROM benutzer WHERE email LIKE '"+email+"'";
-			out.println(queryString);
-
-			ResultSet rs = st.executeQuery(queryString);
+			//out.println("<html><head><title>Login Test</title></head>");
+			//out.println("<body>Login Test<hr><br><br><br>");
+			
+			//out.println(" <br>eingaben email: "+email+" und password: ("+pswd+") <br>");
+			//out.println("<form method='get' action = 'http://praxi.mt.haw-hamburg.de/~dw54/servlet/LogIn'>Login: <input type='email' name='email'><input type='password' name='pswd'><input type='submit' value='Submit' name='absenden'></form> ");
+			
+			
+			//String queryString = "SELECT * FROM benutzer WHERE email LIKE '"+email+"'";
+			//out.println(queryString);
+			
+			ResultSet rs = st.executeQuery("SELECT * FROM benutzer WHERE email LIKE '"+email+"'");
+			//ResultSet rs = st.executeQuery(queryString);
 
 //Hier die Cursor-Schleife
 			while(rs.next()){
-				String id = rs.getString("id");
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				String passwort = rs.getString("passwort");
-				String rolle = rs.getString("rolle");
-				out.println("<br>Name: "+name+" EMail: "+email+" PSWD: "+passwort+" Rolle: "+rolle);
+				String oid = rs.getString("id");
+				String oname = rs.getString("name");
+				String oemail = rs.getString("email");
+				String opasswort = rs.getString("passwort");
+				String orolle = rs.getString("rolle");
+				out.println("<br>"+oid+" Name: "+oname+" EMail: "+oemail+" PSWD: ("+opasswort+") Rolle: "+orolle+"<br><br>");
+				
+				
+				if((oemail.equals(email))&&(opasswort.equals(pswd))){
+					session.setAttribute("iEingeloggt", "true");
+					session.setAttribute("uname",oname);
+					session.setAttribute("umail",oemail);
+					session.setAttribute("urolle",orolle);
+					session.setAttribute("uid",oid);
+					
+					res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/" );
+				}
+				else{
+					session.invalidate();
+					session.setAttribute("iEingeloggt", "false");
+					
+					res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p='err01'" );
+				}
 			}
-			out.println("<hr> </body> </html>");
+			
+			
+			//out.println("<hr> </body> </html>");
 			st.close();
 			con.close();
 		}

@@ -8,12 +8,11 @@
 	
 	String istEingeloggt = (String) session.getAttribute("iEingeloggt");
 	
-	String jSessionID = (String) session.getId();
 	
 	
 	/* =============== WEBSHOP SETUP =============== */
 	
-	String serverURL = "http://praxi.mt.haw-hamburg.de";
+	String serverURL = "http://praxi.mt.haw-hamburg.de/~dw54"; // OHNE abschliessenden Slash
 	
 	String shopTitle = "nerd@m4ch1n3";		// Name des Webshops
 	String trennTitel = " | ";				// Element um den Namen des Shops und Namen der Seite zu trennen
@@ -24,7 +23,11 @@
 	
 	
 	/* =============== DEBUG MODE =============== */
-
+	
+	String jSessionID = (String) session.getId();
+	
+	String UserData = ((String)session.getAttribute("uid"))+" "+((String)session.getAttribute("urolle"))+" "+((String)session.getAttribute("iEingeloggt"))+" "+((String)session.getAttribute("uname"))+" "+((String)session.getAttribute("umail"));
+	
 	boolean debug = true;
 	
 	/* =============== WELCHE SEITE =============== */
@@ -40,6 +43,7 @@
 	else if(myPage.equals("reg"))		h1Title = "Registrieren";
 	else if(myPage.equals("katalog"))	h1Title = "Katalog";
 	else if(myPage.equals("checkout"))	h1Title = "Bezahlen";
+	else if(myPage.equals("err01"))		h1Title = "Falscher Login";
 	else								h1Title = "Fehler";
 	
 	jspTitle = shopTitle+trennTitel+h1Title;
@@ -54,6 +58,7 @@
 <h1><%=h1Title%></h1>
 <% if(debug) {%>
 <p>jSessionID = <%=jSessionID%> | tmp = <%=tmpPage%> | my = <%=myPage%></p>
+<p><%=UserData%></p>
 <% } %>
 
 <div id="topbar">
@@ -63,11 +68,10 @@
 	if(istEingeloggt != "true")
 	{
 %>
-<form method="POST" action = "<%=serverURL%>/class/users">Login: <input type="text" name="username">
- <input type="password" name="passwort"><input type="submit" value="Submit" name="absenden"> oder <a href='index.jsp?p=reg'>Registrieren</a>
+<form method='get' action = '<%=serverURL%>/servlet/LogIn'>Login: <input type='email' name='email'>
+ <input type='password' name='pswd'><input type='submit' value='Submit' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a>
 </form> 
 <%
-	session.setAttribute("iEingeloggt", "true");
 	}
 	else{
 %>
@@ -77,6 +81,10 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 %>
  
 </div>
+</div>
+
+<div id="contend">
+
 </div>
 
 
