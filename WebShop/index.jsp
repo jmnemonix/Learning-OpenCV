@@ -26,7 +26,7 @@
 	
 	String jSessionID = (String) session.getId();
 	
-	String UserData = ((String)session.getAttribute("uid"))+" "+((String)session.getAttribute("urolle"))+" "+((String)session.getAttribute("iEingeloggt"))+" "+((String)session.getAttribute("uname"))+" "+((String)session.getAttribute("umail"));
+	String userData = ((String)session.getAttribute("uid"))+" "+((String)session.getAttribute("urolle"))+" "+((String)session.getAttribute("iEingeloggt"))+" "+((String)session.getAttribute("uname"))+" "+((String)session.getAttribute("umail"));
 	
 	boolean debug = true;
 	
@@ -46,7 +46,7 @@
 	else if(myPage.equals("wagen"))		h1Title = "Einkaufswagen";
 	else if(myPage.equals("reg"))		h1Title = "Registrieren";
 	else if(myPage.equals("katalog"))	h1Title = "Katalog";		// TODO: Warengruppen
-	else if(myPage.equals("ware"))		h1Title = ware("ware");  // TODO: 
+	else if(myPage.equals("ware"))		h1Title = ware("ware");		// TODO: Ware ausgeben
 	else if(myPage.equals("checkout"))	h1Title = "Bezahlen";
 	else if(myPage.equals("err01"))		h1Title = "Falscher Login";
 	else								h1Title = "Fehler";
@@ -60,11 +60,13 @@
 	<link rel="stylesheet" href="<%=CStyleS%>">
 </HEAD>
 <BODY>
-<h1><%=h1Title%></h1>
+
 <% if(debug) {%>
 <p>jSessionID = <%=jSessionID%> | tmp = <%=tmpPage%> | my = <%=myPage%></p>
-<p><%=UserData%></p>
+<p><%=userData%></p>
 <% } %>
+
+<div id="header"><h1><%=h1Title%></h1></div>
 
 <div id="topbar">
 <div id="snavi"><a href="index.jsp?p=home">Home</a> <a href="index.jsp?p=katalog">Katalog</a></div>
@@ -91,6 +93,8 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 <div id="contend">
 
 </div>
+
+<div id="footer">HAW-Hamburg DMI Media-Systems RDB Projekt Dezent: N. Witt Student: J. Simonsen &copy; 2013/2014</div>
 
 
 </BODY>

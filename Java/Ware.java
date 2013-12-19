@@ -1,6 +1,6 @@
 /*
 
-Login Management
+Katalog
 
 
 */
@@ -50,11 +50,10 @@ public class LogIn extends HttpServlet{
 				//String	wbeschreibung	= 			rs.getString("beschreibung");
 				//int		wbestand		= (int) 	rs.getString("bestand");
 				//int		wverkaufbar		= (int) 	rs.getString("verkaufbar");
-				//String	wbildUrl		=			rs.getString("bildUrl");
 				//int		warengruppe		= (int)		rs.getString("warengruppe");
 				float	wpreis			= (float)	rs.getString("preis");
 
-				out.println("<div class='ware' id='"+wid+"'><img src='"+wid+".jpg' alt='"+wid+".jpg'><a class='wname' href='"+WarenURL+"?w="+wid+"'>"+wname+"</a></div>");
+				out.println("<div class='ware' id='"+wid+"'><img src='"+wid+".jpg' alt='"+wid+".jpg'><p><a class='wname' href='"+WarenURL+"?w="+wid+"'>"+wname+"</a><br>Preis:<span class='katpreis'>"+wpreis+"</span></p></div>");
 			}
 
 			
@@ -62,7 +61,7 @@ public class LogIn extends HttpServlet{
 			con.close();
 		}
 		catch (Exception e){
-			out.println(" MySQL Exception: " + e.getMessage());
+			out.println(" Exception: " + e.getMessage());
 		}
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
