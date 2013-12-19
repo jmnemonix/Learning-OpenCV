@@ -50,11 +50,11 @@ public class LogIn extends HttpServlet{
 				//String	wbeschreibung	= 			rs.getString("beschreibung");
 				//int		wbestand		= (int) 	rs.getString("bestand");
 				//int		wverkaufbar		= (int) 	rs.getString("verkaufbar");
-				String	wbildUrl		=			rs.getString("bildUrl");
+				//String	wbildUrl		=			rs.getString("bildUrl");
 				//int		warengruppe		= (int)		rs.getString("warengruppe");
 				float	wpreis			= (float)	rs.getString("preis");
 
-				out.println("<div class='ware' id='"+wid+"'><img src='"+wid+".jpg' alt='"+wid+".jpg'><a class='wname' href='"+WarenURL+"?w="+wid+"'>"+wname+"</p></div>");
+				out.println("<div class='ware' id='"+wid+"'><img src='"+wid+".jpg' alt='"+wid+".jpg'><a class='wname' href='"+WarenURL+"?w="+wid+"'>"+wname+"</a></div>");
 			}
 
 			
