@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Layout mit grafischer Spaltenaufteilung</title>
+<style type="text/css">
+  body {
+    color: black; background-color: white;
+    font-size: 100.01%;
+    font-family: Helvetica,Arial,sans-serif;
+    margin: 0; padding: 1em 0;
+    text-align: center;  /* Zentrierung im Internet Explorer */
+  }
+
+  div#Seite {
+    text-align: left;    /* Seiteninhalt wieder links ausrichten */
+    margin: 0 auto;      /* standardkonforme horizontale Zentrierung */
+    width: 760px;
+    padding: 0;
+    background: #ffffe0 url(hintergrund.gif) repeat-y;
+    border: 2px ridge silver;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin: 0; padding: 0.3em;
+    text-align: center;
+    background: #fed url(../../../src/logo.gif) no-repeat 100% 45%;
+    border-bottom: 1px solid silver;
+  }
+
+  ul#Navigation {
+    font-size: 0.83em;
+    float: left; width: 200px;
+    margin: 0 0 1.2em; padding: 0;
+  }
+  ul#Navigation li {
+    list-style: none;
+    margin: 0; padding: 0.5em;
+  }
+  ul#Navigation a {
+    display: block;
+    padding: 0.2em;
+    font-weight: bold;
+  }
+  ul#Navigation a:link {
+    color: black; background-color: white;
+  }
+  ul#Navigation a:visited {
+    color: #666; background-color: white;
+  }
+  ul#Navigation a:hover {
+    color: black; background-color: #eee;
+  }
+  ul#Navigation a:active {
+    color: white; background-color: gray;
+  }
+
+  div#Inhalt {
+    margin: 0 0 1em 220px;
+    padding: 0 1em;
+  }
+  * html div#Inhalt {
+    height: 1em;  /* Workaround gegen den 3-Pixel-Bug des Internet Explorer bis Version 6 */
+    margin-bottom: 0;
+  }
+  div#Inhalt h2 {
+    font-size: 1.2em;
+    margin: 0.2em 0;
+    color: navy;
+  }
+  div#Inhalt p {
+    font-size: 1em;
+    margin: 1em 0;
+  }
+
+  p#Fusszeile {
+    clear: both;
+    font-size: 0.83em;
+    margin: 0; padding: 0.1em;
+    text-align: center;
+    background-color: #fed;
+    border-top: 1px solid silver;
+  }
+</style>
+</head>
+<body>
+
+<div id="Seite">
+  <h1>CSS-basierte Layouts</h1>
+
+  <ul id="Navigation">
+    <li><a href="http://de.selfhtml.org/css/layouts/einfuehrung.htm">Einführung in CSS-basierte Layouts</a></li>
+    <li><a href="http://de.selfhtml.org/css/layouts/mehrspaltige.htm">Mehrspaltige CSS-basierte Layouts</a></li>
+    <li><a href="http://de.selfhtml.org/css/layouts/fixbereiche.htm">Fixe Bereiche mit CSS-basierten Layouts</a></li>
+    <li><a href="http://de.selfhtml.org/css/layouts/navigationsleisten.htm">CSS-basierte Navigationsleisten</a></li>
+    <li><a href="http://de.selfhtml.org/css/layouts/browserweichen.htm">CSS - Browserweichen</a></li>
+  </ul>
+
+  <div id="Inhalt">
+    <h2>2-spaltiges Layout mit Hintergrundgrafik</h2>
+    <p>In diesem Beispiel wird eine Hintergrundgrafik
+       zur optischen Trennung der Spalten verwendet.</p>
+    <p>Dies erfordert leider, dass die Breite der links stehenden Navigation
+       passend zur Hintergrundgrafik in 'px' angegeben wird.
+       Dadurch kann sich die Breite dieser Box einer Änderung des Schriftgrades
+       nicht anpassen.</p>
+    <p>Wie die links graue Hintergrundgrafik ist auch die gelbe Hintergrundfarbe
+       des Inhaltsbereichs dem die Seitenelemente umschließenden DIV zugewiesen.
+       Sowohl für die Navigation als auch für diese Inhaltsbox ist selbst
+       kein Hintergrund angegeben.<br>
+       Die durchgehende Trennung der Boxen wird somit lediglich optisch simuliert
+       und ist unabhängig von deren Höhe.</p>
+    <p>Der Kopf- und der Fußzeile wurde eine Hintergrundfarbe zugewiesen,
+       damit sich die optische Trennung nicht auf diese Bereiche ausdehnt.</p>
+  </div>
+
+  <p id="Fusszeile">Diese Fußzeile stellt innerhalb des umschließenden DIVs
+     den Elementenfluss wieder her.</p>
+</div>
+
+<p style="text-align:left; margin:1em"><a style="color:black" href="http://de.selfhtml.org/css/layouts/mehrspaltige.htm#hintergrund">zurück</a></p>
+
+</body></html>

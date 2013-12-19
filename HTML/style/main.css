@@ -1,0 +1,80 @@
+/*
+
+  Schriften einbinden
+  ===================
+  Alle hier verwendeten Schriften sind OpenSource!
+
+*/
+@font-face {
+  font-family: FiraMR;
+  src: url(FiraMono-Regular.ttf);
+}
+@font-face {
+  font-family: FiraSM;
+  src: url(FiraSans-Medium.ttf);
+}
+
+          /* === BODY === */
+body {
+  color: white;
+  background-color: #333;
+  font-size: 100.01%;
+  font-family: Courier,FiraMR;
+  margin: 0; padding: 1em;
+  min-width: 41em;
+/* Mindestbreite verhindert Umbruch und Anzeigefehler in modernen Browsern */
+}
+
+
+          /* === NEWS === */
+#news {
+  font-family: FiraMR;
+  font-size: 0.9em;
+  float: right;
+  width: 12em;
+  margin: 0 0 1.1em;
+  padding: 5px;
+/*  background-color: #00A;*/
+  color : #32B932;
+  background-image:    -moz-linear-gradient(right, #007 0%, #003  50%);
+  background-image: -webkit-linear-gradient(top, #040 0%, #111511  75%);
+  background-image:     -ms-linear-gradient(right, #007 0%, #003  50%);
+  background-image:      -o-linear-gradient(right, #007 0%, #003  50%);
+  
+  min-height: 300px;
+}
+#news h2 {
+  font-size: 1.33em;
+  text-align: center;
+}
+#news p {
+  font-size: 1em;
+}
+.newstitle{
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+          /* === INHALT === */
+#inhalt {
+  margin: 0 12em 1em 16em;
+  padding: 0 1em;
+  /*border: 1px dashed silver;*/
+}
+* html div#Inhalt {
+  height: 1em; 
+  /* Workaround gegen den 3-Pixel-Bug des Internet Explorer bis Version 6 */
+}
+#inhalt h1,h2{ text-align: center; }
+
+#inhalt h2 {}
+
+
+          /* === EINTRAG === */
+.eintrag{
+  /* */
+  border: 1px solid ;
+}
