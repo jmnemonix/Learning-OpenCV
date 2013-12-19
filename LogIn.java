@@ -36,15 +36,15 @@ public class LogIn extends HttpServlet{
 			try {
 				BufferedReader in = new BufferedReader(new FileReader("../../../dbsetup.txt")); // Textdatei von "/public_html/WEB-INF/classes" aus gesehen
 				String zeile = null;
-				String usr  = in.readLine();
-				String pswd = in.readLine(); // ACHTUNG DATEI MUSS MINDESTENS ZWEI ZEILEN HABEN --- SONST EXCEPTION!
+				String sqlUsr  = in.readLine();
+				String sqlPswd = in.readLine(); // ACHTUNG DATEI MUSS MINDESTENS ZWEI ZEILEN HABEN --- SONST EXCEPTION!
 
 			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+usr, usr, pswd);
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
 
 //Jetzt einen SQL-Befehl vorbereiten
 			Statement st = con.createStatement();  //(Noch) leerer SQL-Befehl
