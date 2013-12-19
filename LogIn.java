@@ -11,15 +11,13 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class LogIn{
+public class LogIn extends HttpServlet{
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		res.setContentType("text/html");
 		PrintWriter out = res.getWriter();
 
-		String telname = req.getParameter("tname");
-		String telnr= req.getParameter("tnr");
-		int i = Integer.parseInt(telnr);
+		
 
 //DB-Treiber einbinden
 		try{
@@ -32,21 +30,19 @@ public class LogIn{
 // Connection zum DB-Server eroeffnen
 		try{
 			
-			
+
 			try {
 				BufferedReader in = new BufferedReader(new FileReader("../../../dbsetup.txt")); // Textdatei von "/public_html/WEB-INF/classes" aus gesehen
 				String zeile = null;
 				String usr  = in.readLine();
 				String pswd = in.readLine(); // ACHTUNG DATEI MUSS MINDESTENS ZWEI ZEILEN HABEN --- SONST EXCEPTION!
-				
-				
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+usr, usr, pswd);
+
 			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-			
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+usr, usr, pswd);
 
 //Jetzt einen SQL-Befehl vorbereiten
 			Statement st = con.createStatement();  //(Noch) leerer SQL-Befehl
@@ -75,5 +71,7 @@ public class LogIn{
 			out.println(" MySQL Exception: " + e.getMessage());
 		}
 	}
-}
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		doGet(req,res);
+	}
 }
