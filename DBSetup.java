@@ -5,7 +5,6 @@
 	Datenbanken einmal einrichten!
 
 */
-// TODO: das teil hier in eine JSP packen
 
 import java.io.*;
 import java.sql.*;

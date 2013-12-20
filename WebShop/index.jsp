@@ -73,8 +73,8 @@
 	<TITLE><%=jspTitle%></TITLE>
 	<link rel="stylesheet" href="<%=CStyleS%>">
 
-  	<link rel="stylesheet" title="Obsidian" href="obsidian.css">
-	<script src="highlight.pack.js"></script>
+  	<link rel="stylesheet" title="Obsidian" href="highlight.js/styles/obsidian.css">
+	<script src="highlight.js/highlight.pack.js"></script>
 	<script>
 		//hljs.tabReplace = '    ';
 		hljs.initHighlightingOnLoad();
