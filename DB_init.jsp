@@ -1,8 +1,0 @@
-<%
-/*
-
-JSP Datenbank erstellen
-
-
-*/
-%>
