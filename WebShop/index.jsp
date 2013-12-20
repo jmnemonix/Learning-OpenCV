@@ -61,6 +61,7 @@
 	else if(myPage.equals("kontakt"))	h1Title = "Kontakt";
 	else if(myPage.equals("err01"))		h1Title = "Falscher Login";
 	else if(myPage.equals("prem"))		h1Title = "Presentation Mode";
+	else if(myPage.equals("admin"))		h1Title = "Backend";
 	else								h1Title = "Fehler";
 
 	String javaContend = "";//Contend.ref(myPage);
@@ -124,10 +125,6 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 	
 	String tmpPage = request.getParameter("p");
 	String myPage;
-
-//	public String ware(String ware){
-//		retrun "ware ist "+ware;
-//	}
 	
 	if(tmpPage == null) myPage = "home";
 	else myPage = tmpPage;
@@ -135,8 +132,8 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 	if(myPage.equals("home"))			h1Title = "Home";
 	else if(myPage.equals("wagen"))		h1Title = "Einkaufswagen";
 	else if(myPage.equals("reg"))		h1Title = "Registrieren";
-	else if(myPage.equals("katalog"))	h1Title = "Katalog";		// TODO: Warengruppen
-	else if(myPage.equals("ware"))		h1Title = "";//ware("ware");		// TODO: Ware ausgeben
+	else if(myPage.equals("katalog"))	h1Title = "Katalog";
+	else if(myPage.equals("ware"))		h1Title = "";//ware("ware");
 	else if(myPage.equals("checkout"))	h1Title = "Bezahlen";
 	else if(myPage.equals("agb"))		h1Title = "AGB";
 	else if(myPage.equals("impressum"))	h1Title = "Impressum";
@@ -144,10 +141,6 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 	else if(myPage.equals("err01"))		h1Title = "Falscher Login";
 	else if(myPage.equals("prem"))		h1Title = "Presentation Mode";
 	else								h1Title = "Fehler";
-
-	String javaContend = "";//Contend.ref(myPage);
-	
-	jspTitle = shopTitle+trennTitel+h1Title;
 </code></pre>
 
 </BODY>
