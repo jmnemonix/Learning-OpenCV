@@ -43,25 +43,59 @@
 	String tmpPage = request.getParameter("p");
 	String myPage;
 
+	String javaContend = "";//Contend.ref(myPage);
 	
 	if(tmpPage == null) myPage = "home";
 	else myPage = tmpPage;
 	
-	if(myPage.equals("home"))			h1Title = "Home";
-	else if(myPage.equals("wagen"))		h1Title = "Einkaufswagen";
-	else if(myPage.equals("reg"))		h1Title = "Registrieren";
-	else if(myPage.equals("katalog"))	h1Title = "Katalog";		// TODO: Warengruppen
-	else if(myPage.equals("ware"))		h1Title = "";//ware("ware");		// TODO: Ware ausgeben
-	else if(myPage.equals("checkout"))	h1Title = "Bezahlen";
-	else if(myPage.equals("agb"))		h1Title = "AGB";
-	else if(myPage.equals("impressum"))	h1Title = "Impressum";
-	else if(myPage.equals("kontakt"))	h1Title = "Kontakt";
-	else if(myPage.equals("err"))		h1Title = "Fehlerbehandlung";
-	else if(myPage.equals("prem"))		h1Title = "Presentation Mode";
-	else if(myPage.equals("admin"))		h1Title = "Backend";
-	else								h1Title = "Fehler";
-
-	String javaContend = "";//Contend.ref(myPage);
+	if(myPage.equals("home")){
+		h1Title = "Home";
+		javaContend = "Willkommen in meinem Webshop!!<br>Hier gibt es news:";
+	}
+	else if(myPage.equals("wagen")){
+		h1Title = "Einkaufswagen";
+		javaContend = "Dein Einkaufswagen scheint leer zu sein!";
+	}
+	else if(myPage.equals("reg")){
+		h1Title = "Registrieren";
+		javaContend = "du kannst dich momentan NICHT registrieren";
+	}
+	else if(myPage.equals("katalog")){
+		h1Title = "Katalog";		// TODO: Warengruppen
+		javaContend ="katttttttattatatalog";
+	}
+	else if(myPage.equals("ware")){
+		h1Title = "";//ware("ware");		// TODO: Ware ausgeben
+	}
+	else if(myPage.equals("checkout")){
+		h1Title = "Bezahlen";
+	}
+	else if(myPage.equals("agb")){
+		h1Title = "AGB";
+		javaContend ="Da dieser Webschop keine geschäfte abschliesst gibt es auch keine AGB";
+	}
+	else if(myPage.equals("impressum")){
+		h1Title = "Impressum";
+		javaContend = "Impressionnnenennenene";
+	}
+	else if(myPage.equals("kontakt")){
+		h1Title = "Kontakt";
+		javaContend = "Kontakt unerw&uuml;nscht";
+	}
+	else if(myPage.equals("err")){
+		h1Title = "Fehlerbehandlung";
+		javaContend = "FEHLER";
+	}
+	else if(myPage.equals("prem")){
+		h1Title = "Presentation Mode";
+		javaContend = "hier kommt der code";
+	}
+	else if(myPage.equals("admin")){
+		h1Title = "Backend";
+	}
+	else{
+		h1Title = "Fehler";
+	}
 	
 	jspTitle = shopTitle+trennTitel+h1Title;
 

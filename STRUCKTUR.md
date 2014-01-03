@@ -12,7 +12,7 @@ STRUCKTUR
 	|		o-- Einkaufswagen
 	|		|
 	|		|
-	|		o-- Registrieren
+	|		o-- Registrieren > /servlet/Registrieren
 	|		|
 	|		|
 	|		o-- Registrierung erfolgreich
@@ -71,6 +71,10 @@ STRUCKTUR
 	|		|
 	|		|
 	|		o-> index.jsp > Falsche Login
+	|
+	|
+	|
+	o-- /servlet/Registrieren (--> index.jsp)
 	|		|
 	|		|
 	|		o-> index.jsp > registrierung erfolgreich
