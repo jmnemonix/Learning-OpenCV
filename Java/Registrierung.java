@@ -1,6 +1,6 @@
 /*
 
-Login Management
+Register Management
 
 
 */
@@ -11,7 +11,7 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class Login extends HttpServlet{
+public class Registrierung extends HttpServlet{
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		
@@ -76,7 +76,6 @@ public class Login extends HttpServlet{
 		}
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-		res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p='err'" );
-		// TODO richtigern fehler code senden
+		res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p='err01'" );
 	}
 }

@@ -3,64 +3,87 @@ STRUCKTUR
 
  WebShop
 	|
-	--- index.jsp
-	|		|
-	|		--- Home
+	o-- index.jsp
 	|		|
 	|		|
-	|		--- Einkaufswagen
+	|		o-- Home
 	|		|
 	|		|
-	|		--- Registrieren
+	|		o-- Einkaufswagen
 	|		|
 	|		|
-	|		--- Katalog
+	|		o-- Registrieren
 	|		|
 	|		|
-	|		--- Waren Details
+	|		o-- Registrierung erfolgreich
 	|		|
 	|		|
-	|		--- AGB
+	|		o-- Katalog
 	|		|
 	|		|
-	|		--- Impressum
+	|		o-- Waren Details
 	|		|
 	|		|
-	|		--- Kontakt
+	|		o-- AGB
 	|		|
 	|		|
-	|		--- Verwaltung
-	|		|		|
-	|		|		--- Ware
-	|		|		|
-	|		|		|
-	|		|		--- Bestellungen
-	|		|		|
-	|		|		|
-	|		|		--- Benutzer
+	|		o-- Impressum
+	|		|
+	|		|
+	|		o-- Kontakt
+	|		|
+	|		|
+	|		o-- Verwaltung
 	|		|		|
 	|		|		|
-	|		|		--- Datenbanken
+	|		|		o-- Ware
+	|		|		|
+	|		|		|
+	|		|		o-- Bestellungen
+	|		|		|
+	|		|		|
+	|		|		o-- Benutzer
+	|		|		|
+	|		|		|
+	|		|		o-- Datenbanken
 	|		|
 	|		|
-	|		--- Presentation Mode
+	|		o-- Presentation Mode
 	|		|
 	|		|
-	|		--- Falscher Login
+	|		o-- Falscher Login
 	|		|
 	|		|
-	|		--- Fehler
+	|		o-- Fehler
 	|
 	|
-	--- logout.jsp
+	o-- logout.jsp
+	|		|
+	|		|
+	|		o-> index.jsp > Home
 	|
 	|
 	|
-	--- /servlet/Login
+	o-- /servlet/Login (--> index.jsp)
+	|		|
+	|		|
+	|		o-> index.jsp > Home
+	|		|
+	|		|
+	|		o-> index.jsp > Falsche Login
+	|		|
+	|		|
+	|		o-> index.jsp > registrierung erfolgreich
 	|
 	|
 	|
-	--- /servlet/Ware
+	o-- /servlet/Ware
+			|
+			|
+			o-< index.jsp < Ware
+			|
+			|
+			0-< index.jsp < Katalog
 
 
 

@@ -21,7 +21,7 @@
 	String h1Title;							// 
 	String jspTitle;						// 
 	
-	String CStyleS = "style/main.css";		// Hier kann der Style des Webshops einfach verändert werden.
+	String CStyleS = "style/main.css";		// Hier kann der Style des Webshops einfach verÃ¤ndert werden.
 
 	/* =============== PRAESENTATION MODE =============== */
 
@@ -43,9 +43,6 @@
 	String tmpPage = request.getParameter("p");
 	String myPage;
 
-//	public String ware(String ware){
-//		retrun "ware ist "+ware;
-//	}
 	
 	if(tmpPage == null) myPage = "home";
 	else myPage = tmpPage;
@@ -59,7 +56,7 @@
 	else if(myPage.equals("agb"))		h1Title = "AGB";
 	else if(myPage.equals("impressum"))	h1Title = "Impressum";
 	else if(myPage.equals("kontakt"))	h1Title = "Kontakt";
-	else if(myPage.equals("err01"))		h1Title = "Falscher Login";
+	else if(myPage.equals("err"))		h1Title = "Fehlerbehandlung";
 	else if(myPage.equals("prem"))		h1Title = "Presentation Mode";
 	else if(myPage.equals("admin"))		h1Title = "Backend";
 	else								h1Title = "Fehler";
@@ -67,8 +64,12 @@
 	String javaContend = "";//Contend.ref(myPage);
 	
 	jspTitle = shopTitle+trennTitel+h1Title;
-	
+
+
+	/* =============== AUSGABE =============== */
 %>
+
+
 <HTML>
 <HEAD>
 	<TITLE><%=jspTitle%></TITLE>
@@ -86,8 +87,10 @@
 	<div id="noJS">Dieses Seite ben&ouml;tigt JavaScript!</div>
 
 <% if(debug) {%>
-<p>jSessionID = <%=jSessionID%> | tmp = <%=tmpPage%> | my = <%=myPage%></p>
-<p><%=userData%></p>
+<div id="debug">
+	<p>jSessionID = <%=jSessionID%> | tmp = <%=tmpPage%> | my = <%=myPage%></p>
+	<p><%=userData%></p>
+</div>
 <% } %>
 
 <div id="header"><h1><%=h1Title%></h1></div>
@@ -119,29 +122,6 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 </div>
 
 <div id="footer">HAW-Hamburg DMI Media-Systems RDB Projekt Dezent: N. Witt Student: J. S &copy; 2013/2014</div>
-
-<pre><code class="java">	
-	/* =============== WELCHE SEITE =============== */
-	
-	String tmpPage = request.getParameter("p");
-	String myPage;
-	
-	if(tmpPage == null) myPage = "home";
-	else myPage = tmpPage;
-	
-	if(myPage.equals("home"))			h1Title = "Home";
-	else if(myPage.equals("wagen"))		h1Title = "Einkaufswagen";
-	else if(myPage.equals("reg"))		h1Title = "Registrieren";
-	else if(myPage.equals("katalog"))	h1Title = "Katalog";
-	else if(myPage.equals("ware"))		h1Title = "";//ware("ware");
-	else if(myPage.equals("checkout"))	h1Title = "Bezahlen";
-	else if(myPage.equals("agb"))		h1Title = "AGB";
-	else if(myPage.equals("impressum"))	h1Title = "Impressum";
-	else if(myPage.equals("kontakt"))	h1Title = "Kontakt";
-	else if(myPage.equals("err01"))		h1Title = "Falscher Login";
-	else if(myPage.equals("prem"))		h1Title = "Presentation Mode";
-	else								h1Title = "Fehler";
-</code></pre>
 
 </BODY>
 </HTML>
