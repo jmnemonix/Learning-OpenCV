@@ -17,7 +17,7 @@
 	String serverURL = "http://praxi.mt.haw-hamburg.de/~dw54"; // OHNE abschliessenden Slash
 	
 	String shopTitle = "nerd@m4ch1n3";		// Name des Webshops
-	String trennTitel = " | ";				// Element um den Namen des Shops und Namen der Seite zu trennen
+	String trennTitle = " | ";				// Element um den Namen des Shops und Namen der Seite zu trennen
 	String h1Title;							// 
 	String jspTitle;						// 
 	
@@ -36,7 +36,7 @@
 	
 	String userData = ((String)session.getAttribute("uid"))+" "+((String)session.getAttribute("urolle"))+" "+((String)session.getAttribute("iEingeloggt"))+" "+((String)session.getAttribute("uname"))+" "+((String)session.getAttribute("umail"));
 	
-	boolean debug = true;
+	boolean debug = false;
 	
 	/* =============== WELCHE SEITE =============== */
 	
@@ -72,7 +72,7 @@
 	}
 	else if(myPage.equals("agb")){
 		h1Title = "AGB";
-		javaContend ="Da dieser Webschop keine geschäfte abschliesst gibt es auch keine AGB";
+		javaContend ="Da dieser Webschop keine gesch&auml;fte abschliesst gibt es auch keine AGB";
 	}
 	else if(myPage.equals("impressum")){
 		h1Title = "Impressum";
@@ -97,7 +97,7 @@
 		h1Title = "Fehler";
 	}
 	
-	jspTitle = shopTitle+trennTitel+h1Title;
+	jspTitle = shopTitle+trennTitle+h1Title;
 
 
 	/* =============== AUSGABE =============== */
@@ -136,7 +136,7 @@
 	if(istEingeloggt != "true")
 	{
 %>
-<form method='POST' action = '<%=serverURL%>/servlet/LogIn'>Login: <input type='email' name='email'>
+<form method='POST' action = '<%=serverURL%>/servlet/Login'>Login: <input type='email' name='email'>
  <input type='password' name='pswd'><input type='submit' value='Submit' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a>
 </form> 
 <%
@@ -155,7 +155,7 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 <%=javaContend%>
 </div>
 
-<div id="footer">HAW-Hamburg DMI Media-Systems RDB Projekt Dezent: N. Witt Student: J. S &copy; 2013/2014</div>
+<div id="footer">&copy; 2014 - <a href="index.jsp?p=agb">ABG</a> <a href="index.jsp?p=impressum">Impressum</a> <a href="index.jsp?p=kontakt">Kontakt</a></div>
 
 </BODY>
 </HTML>

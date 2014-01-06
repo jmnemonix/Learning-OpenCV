@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+	<TITLE>title</TITLE>
+
+	<meta http-equiv="refresh" content="2; URL=test.html">
+	<link rel="stylesheet" href="main.css">
+
+  	<link rel="stylesheet" title="Obsidian" href="highlight.js/styles/obsidian.css">
+	<script src="highlight.js/highlight.pack.js"></script>
+	<script>
+		//hljs.tabReplace = '    ';
+		hljs.initHighlightingOnLoad();
+	</script>
+
+</HEAD>
+<BODY>
+<div id="debug">
+	<p>DEBUG BOX</p>
+	<p>jSessionID = <%=jSessionID%> | tmp = <%=tmpPage%> | my = <%=myPage%></p>
+	<p><%=userData%></p>
+</div>
+
+<div id="noJS">Dieses Seite ben&ouml;tigt JavaScript!</div>
+
+<div id="container">
+
+	<div id="kopf"><h1>nerd@m4ch1n3 &tilde;&dollar; </h1></div>
+
+	<div id="topbar">
+		<div id="snavi"><a href="index.jsp?p=home">Home</a> <a href="index.jsp?p=katalog">Katalog</a></div>
+		<div id="warenkorb"><a href="">Du hast x1 Produkte (x2 &euro;) in deinem Warenkorb</a></div>
+		<div id="logbox">
+			<form method='POST' action = '<%=serverURL%>/servlet/Login'>
+				Login: <input type='email' name='email'><input type='password' name='pswd'><input type='submit' value='Submit' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
+			</form>
+		</div>
+		<div style="clear:left"></div>
+	</div>
+
+	<div id="inhalt">
+		<h2>h1Title</h2>
+		inhalt
+
+		<div class="produkt"><div class="produkt bild"><img src="kerze.png"></div><p class="beschreibung">dies ist eine wunderbare kerze, sehr gut geeignet um sich den arbend zu versüssen <br><a href="warenkorb">zum warenkorb hinzufüegen</a></div>
+
+	</div>
+
+	<div id="fusszeile">
+		&copy; 2014 - <a href="index.jsp?p=agb">ABG</a> <a href="index.jsp?p=impressum">Impressum</a> <a href="index.jsp?p=kontakt">Kontakt</a>
+	</div>
+
+</div>
+
+</BODY>
+</HTML>

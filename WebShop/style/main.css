@@ -1,2 +1,55 @@
 
 
+/*
+    ===== Grundlegende ELemente =====
+*/
+
+  body {
+    color: black;
+    background-color: white;
+    font-size: 100.01%;
+    font-family: Helvetica,Arial,sans-serif;
+    margin: 0; padding: 1em 0;
+    text-align: center;
+  }
+
+  #debug {
+    display: none;
+    color: #900;
+    background-color: #FDA;
+    border: 5px solid;
+  }
+
+  #kopf {
+    font-size: 1.5em;
+    margin: 0; padding: 0.3em;
+    text-align: center;
+    background: #fed url(logo.gif) no-repeat 100% 45%;
+    border-bottom: 1px solid silver;
+  }
+
+  #container {
+    background-color: #ffffe0;
+    text-align: left;
+    margin: 0 auto;
+    width: 900px;
+    padding: 0;
+   /* background: #ffffe0 url(hintergrund.gif) repeat-y; */
+    border: 1px solid black;
+  }
+
+
+
+  * html div#Inhalt {
+    height: 1em;  /* Workaround gegen den 3-Pixel-Bug des Internet Explorer bis Version 6 */
+    margin-bottom: 0;
+  }
+
+  #fusszeile {
+    clear: both;
+    font-size: 0.83em;
+    margin: 0; padding: 0.1em;
+    text-align: center;
+    background-color: #fed;
+    border-top: 1px solid silver;
+  }

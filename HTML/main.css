@@ -1,0 +1,102 @@
+
+
+/*
+		===== Grundlegende ELemente =====
+*/
+
+  body {
+    color: white;
+    background-color: #201f1d;
+    font-size: 100.01%;
+    font-family: Helvetica,Arial,sans-serif;
+    margin: 0; padding: 1em 0;
+    text-align: center;
+  }
+
+  a {
+  	color: #1f3349;
+  	text-decoration: none;
+  }
+  a:hover{
+  	color: #1f6825;
+  }
+
+  #debug {
+  	display: none;
+  	color: #900;
+  	background-color: #FDA;
+  	border: 5px solid;
+  }
+
+  #container {
+  	color: #2d491f;
+  	background-color: black;
+    text-align: left;
+    margin: 0 auto;
+    width: 95%;
+    padding: 0;
+   /* background: #ffffe0 url(hintergrund.gif) repeat-y; */
+    border: 1px solid #2d491f;
+  }
+
+  #kopf {
+  	color: #8ac;
+    font-size: 1.5em;
+    height: 100px;
+    margin: 0; padding: 0.3em;
+    text-align: center;
+    background: black url(gnu1.png) no-repeat 90% 40%;
+    border-bottom: 1px solid #2d491f;
+  }
+  #topbar {
+  	/*height: 30px;*/
+  	padding: 2px 10px;
+    border-bottom: 1px solid #2d491f;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+  }
+  #snavi {
+  	float: left;
+  	width: 120px;
+  	margin-left: 20px;
+  }
+  #logbox {
+  	text-align: right;
+  	float: right;
+  	width: 700px;
+
+  	padding-right: 40px;
+  }
+  #logbox form input{
+  	border: 1px solid #2d491f;
+  	color: #2d491f;
+  	background-color: black;
+  }
+  #warenkorb {
+  	border: 1px dashed #2d491f;
+  	float: right;
+  	min-width: 350px;
+  	margin-right: 20px;
+  	padding-left: 5px;
+  	padding-right: 5px;
+  }
+
+  * html div#inhalt {
+    height: 1em;  /* Workaround gegen den 3-Pixel-Bug des Internet Explorer bis Version 6 */
+    margin-bottom: 0;
+  }
+  #inhalt {
+    margin: 0 0 1em 220px;
+    padding: 0 1em;
+  }
+
+  #fusszeile {
+    clear: both;
+    font-size: 0.83em;
+    margin: 0; padding: 0.1em;
+    text-align: center;
+    color:#2d491f;
+    background-color: black;
+    border-top: 1px solid #2d491f;
+  }
