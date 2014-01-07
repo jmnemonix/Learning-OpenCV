@@ -21,7 +21,7 @@
 	String h1Title;							// 
 	String jspTitle;						// 
 	
-	String CStyleS = "style/main.css";		// Hier kann der Style des Webshops einfach verändert werden.
+	String CStyleS = "main.css";		// Hier kann der Style des Webshops einfach verändert werden.
 
 	/* =============== PRAESENTATION MODE =============== */
 
@@ -36,7 +36,7 @@
 	
 	String userData = ((String)session.getAttribute("uid"))+" "+((String)session.getAttribute("urolle"))+" "+((String)session.getAttribute("iEingeloggt"))+" "+((String)session.getAttribute("uname"))+" "+((String)session.getAttribute("umail"));
 	
-	boolean debug = false;
+	boolean debug = true;
 	
 	/* =============== WELCHE SEITE =============== */
 	
@@ -109,6 +109,8 @@
 	<TITLE><%=jspTitle%></TITLE>
 	<link rel="stylesheet" href="<%=CStyleS%>">
 
+<% if(debug) {%><meta http-equiv="refresh" content="2; URL=index.jsp"><% } %>
+
   	<link rel="stylesheet" title="Obsidian" href="highlight.js/styles/obsidian.css">
 	<script src="highlight.js/highlight.pack.js"></script>
 	<script>
@@ -118,27 +120,33 @@
 
 </HEAD>
 <BODY>
-	<div id="noJS">Dieses Seite ben&ouml;tigt JavaScript!</div>
 
 <% if(debug) {%>
 <div id="debug">
+	<p>DEBUG BOX</p>
 	<p>jSessionID = <%=jSessionID%> | tmp = <%=tmpPage%> | my = <%=myPage%></p>
 	<p><%=userData%></p>
 </div>
 <% } %>
 
-<div id="header"><h1><%=h1Title%></h1></div>
+<div id="noJS">Dieses Seite ben&ouml;tigt JavaScript!</div>
 
-<div id="topbar">
-<div id="snavi"><a href="index.jsp?p=home">Home</a> <a href="index.jsp?p=katalog">Katalog</a></div>
-<div id="logbox">
+<div id="container">
+
+	<div id="kopf"><h1>nerd@m4ch1n3 &tilde;&dollar; </h1></div>
+
+	<div id="topbar">
+		<div id="snavi"><a href="index.jsp?p=home">Home</a> <a href="index.jsp?p=katalog">Katalog</a></div>
+		<div id="warenkorb"><a href="">Du hast x1 Produkte (x2 &euro;) in deinem Warenkorb</a></div>
+		<div id="logbox">
 <%
 	if(istEingeloggt != "true")
 	{
 %>
-<form method='POST' action = '<%=serverURL%>/servlet/Login'>Login: <input type='email' name='email'>
- <input type='password' name='pswd'><input type='submit' value='Submit' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a>
-</form> 
+			<form method='POST' action = '<%=serverURL%>/servlet/Login'>
+				<input type='email' name='email'><input type='password' name='pswd'><input id="absenden" type='submit' value='Login' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
+			</form>
+
 <%
 	}
 	else{
@@ -147,15 +155,31 @@ IST EINGELOGGT! <a href="logout.jsp">Logout</a>
 <%
 	}
 %>
- 
-</div>
-</div>
+		</div>
+		<div style="clear:left"></div>
+	</div>
+	<div id="inhalt">
+		<h2><%=h1Title%></h2>
+		inhalt
 
-<div id="contend">
+		<div id="Navigation">
+    		<ul>
+      			<li><a href="home">Startseite</a></li>
+     			<li><a href="katalog">Katalog</a></li>
+     		</ul>
+		</div>
+
+		<div id="contend">
 <%=javaContend%>
-</div>
+		</div>
 
-<div id="footer">&copy; 2014 - <a href="index.jsp?p=agb">ABG</a> <a href="index.jsp?p=impressum">Impressum</a> <a href="index.jsp?p=kontakt">Kontakt</a></div>
+	</div>
+
+	<div id="fusszeile">
+		&copy; 2014 - <a href="index.jsp?p=agb">ABG</a> <a href="index.jsp?p=impressum">Impressum</a> <a href="index.jsp?p=kontakt">Kontakt</a>
+	</div>
+
+</div>
 
 </BODY>
 </HTML>

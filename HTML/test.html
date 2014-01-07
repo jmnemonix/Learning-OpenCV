@@ -31,7 +31,7 @@
 		<div id="warenkorb"><a href="">Du hast x1 Produkte (x2 &euro;) in deinem Warenkorb</a></div>
 		<div id="logbox">
 			<form method='POST' action = '<%=serverURL%>/servlet/Login'>
-				Login: <input type='email' name='email'><input type='password' name='pswd'><input type='submit' value='Submit' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
+				<input type='email' name='email'><input type='password' name='pswd'><input id="absenden" type='submit' value='Login' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
 			</form>
 		</div>
 		<div style="clear:left"></div>
@@ -41,7 +41,26 @@
 		<h2>h1Title</h2>
 		inhalt
 
-		<div class="produkt"><div class="produkt bild"><img src="kerze.png"></div><p class="beschreibung">dies ist eine wunderbare kerze, sehr gut geeignet um sich den arbend zu versüssen <br><a href="warenkorb">zum warenkorb hinzufüegen</a></div>
+		<div id="Navigation">
+    		<ul>
+      			<li><a href="home">Startseite</a></li>
+     			<li><a href="katalog">Katalog</a></li>
+     		</ul>
+		</div>
+
+		<div id="contend">
+
+			<div class="produkt"><div class="produkt bild"><img src="kerze.png"></div>
+				<p class="beschreibung">dies ist eine wunderbare kerze, sehr gut geeignet um sich den arbend zu versüssen <br><a href="warenkorb">zum warenkorb hinzufüegen</a>
+				<div style="clear:left"></div>
+			</div>
+
+			<div class="produkt"><div class="produkt bild"><img src="kerze.png"></div>
+				<p class="beschreibung">dies ist eine wunderbare kerze, sehr gut geeignet um sich den arbend zu versüssen <br><a href="warenkorb">zum warenkorb hinzufüegen</a>
+				<div style="clear:left"></div>
+			</div>
+
+		</div>
 
 	</div>
 

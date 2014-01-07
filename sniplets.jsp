@@ -23,3 +23,6 @@
 </code></pre>
 */
 %>
+
+
+<div id="noJS">Dieses Seite ben&ouml;tigt JavaScript!</div>
