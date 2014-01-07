@@ -22,11 +22,12 @@
   }
 
   h2 {
+    margin-top: 5px;
     text-align: center;
   }
 
   #debug {
-  	display: none;
+  	/*display: none;*/
   	color: #900;
   	background-color: #FDA;
   	border: 5px solid;

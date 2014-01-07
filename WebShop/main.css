@@ -21,8 +21,13 @@
     color: #1f6825;
   }
 
+  h2 {
+    margin-top: 5px;
+    text-align: center;
+  }
+
   #debug {
-    display: none;
+    /*display: none;*/
     color: #900;
     background-color: #FDA;
     border: 5px solid;
@@ -57,6 +62,7 @@
 
   }
   #snavi {
+    display: none;
     float: left;
     width: 120px;
     margin-left: 20px;
@@ -92,13 +98,47 @@
     padding: 10px;
   }
 
+  #Navigation {
+    font-size: 1em;
+    float: left;
+    width: 200px;
+    margin: 0 0 1.2em; padding: 0;
+  }
+  #Navigation li {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em;
+  }
+  #Navigation a {
+    display: block;
+    padding: 0.2em;
+    /*font-weight: bold;*/
+  }
+  /*#Navigation a:link {
+    color: black; background-color: white;
+  }
+  #Navigation a:visited {
+    color: #666; background-color: white;
+  }
+  #Navigation a:hover {
+    color: black; background-color: #eee;
+  }
+  #Navigation a:active {
+    color: white; background-color: gray;
+  }*/
+
+
   * html div#contend {
-    height: 1em;  /* Workaround gegen den 3-Pixel-Bug des Internet Explorer bis Version 6 */
+    height: 1em;
     margin-bottom: 0;
   }
   #contend {
     margin: 0 0 1em 220px;
     padding: 0 1em;
+  }
+
+  #contend .produkt .bild{
+    float: left;
   }
 
   #fusszeile {

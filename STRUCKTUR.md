@@ -33,6 +33,9 @@ STRUCKTUR
 	|		o-- Kontakt
 	|		|
 	|		|
+	|		o-- Benutzer : Seine Daten einsehen und editieren8
+	|		|
+	|		|
 	|		o-- Verwaltung
 	|		|		|
 	|		|		|

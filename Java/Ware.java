@@ -13,19 +13,29 @@ import javax.servlet.http.*;
 
 public class LogIn extends HttpServlet{
 
+	PrintWriter out = null;
+	HttpSession session = null;
+
+
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+
+		session = req.getSession();
+	
+		res.setContentType("text/html");
+		out = res.getWriter();
+
+		String warengruppe = req.getParameter("wgruppe");
+
+
+
+	}
+
+	public void getByWarengruppe(int wgruppe){
 		
 		String sqlUsr  = "dw54";
 		String sqlPswd = "";
 
 		String WarenURL = "http://praxi.mt.haw-hamburg.de/~dw54/"; // Ware in JSP EInpflegen
-
-		HttpSession session = req.getSession();
-	
-		res.setContentType("text/html");
-		PrintWriter out = res.getWriter();
-
-		String wgruppe = req.getParameter("wgruppe");
 		
 		
 		try{
@@ -50,7 +60,7 @@ public class LogIn extends HttpServlet{
 				//String	wbeschreibung	= 			rs.getString("beschreibung");
 				//int		wbestand		= (int) 	rs.getString("bestand");
 				//int		wverkaufbar		= (int) 	rs.getString("verkaufbar");
-				//int		warengruppe		= (int)		rs.getString("warengruppe");
+				//int		warengruppe		= (int)		rs.getString("warengruppe"); // achtung variable umbennenen, da schon vorhanden
 				float	wpreis			= (float)	rs.getString("preis");
 
 				out.println("<div class='ware' id='"+wid+"'><img src='"+wid+".jpg' alt='"+wid+".jpg'><p><a class='wname' href='"+WarenURL+"?w="+wid+"'>"+wname+"</a><br>Preis:<span class='katpreis'>"+wpreis+"</span></p></div>");
