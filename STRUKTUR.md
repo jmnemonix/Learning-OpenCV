@@ -1,4 +1,4 @@
-STRUCKTUR
+Struktur
 =======
 
  WebShop
@@ -99,6 +99,30 @@ STRUCKTUR
 
 
 
-	else if(myPage.equals("ware"))		h1Title = "";//ware("ware");
-	else if(myPage.equals("checkout"))	h1Title = "Bezahlen";
-	else								h1Title = "Fehler";
+Aufgaben
+=======
+
+Wer 		Aufgaben					Erlegigt		Wo
+
+Alle 		Begrüssung					Ja				index.jsp
+Alle 		News Anzeigen 				Bonus
+Alle 		AGB, Impressum Anzeigen 	Ja 				index.jsp
+Alle 		Konakt aufnehmen			Bonus
+
+Benutzer	Einloggen					Ja 				Login.java
+Benutzer	Ausloggen					Ja 				Logout.java
+Benutzer	Daten Einsehen 				Nein
+
+Kunde		Kategorien Browsen			Jain			index.jsp und Katalog.java
+Kunde		Registrieren				Nein
+Kunde		Ein Passwort generiert		Nein
+Kunde		Waren in Einkaufswagen		Nein
+Kunde		Einkaufswagen Anzeigen		Nein
+Kunde		Bestellen 					Nein
+
+Admin		Benutzer Verwalten			Nein
+Admin 		Waren Verwalten				Nein
+Admin		Bestellungen Verwalten		Nein
+Admin		Datenbank Zurücksetzen		Nein
+Admin		News Verwalten				Bonus
+
