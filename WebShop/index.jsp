@@ -43,7 +43,7 @@
 	
 	String userData = ("uid: "+(String)session.getAttribute("uid"))+" rolle: "+((String)session.getAttribute("urolle"))+" eingeloggt: "+((String)session.getAttribute("iEingeloggt"))+" name: "+((String)session.getAttribute("uname"))+" mail: "+((String)session.getAttribute("umail"));
 	
-	boolean debug = true;
+	boolean debug = false;
 	
 	/* =============== WELCHE SEITE =============== */
 
@@ -215,7 +215,7 @@ Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! 
 			String path = "/servlet/Katalog?wg="+wGruppe;
 	%> 
 		
-		<jsp:include page="<%=path%>"/><br><br><br><%=path%>
+		<jsp:include page="<%=path%>"/>
 
 	<%
 	}
@@ -223,7 +223,7 @@ Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! 
 else { %>
 	<%=javaContend%>
 <% } %>
-			
+
 		</div>
 
 	</div>
