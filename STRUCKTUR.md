@@ -51,7 +51,7 @@ STRUCKTUR
 	|		|		o-- Datenbanken
 	|		|
 	|		|
-	|		o-- Presentation Mode
+	|		o-- Presentation Mode			???
 	|		|
 	|		|
 	|		o-- Falscher Login
@@ -60,7 +60,8 @@ STRUCKTUR
 	|		o-- Fehler
 	|
 	|
-	o-- logout.jsp
+	|
+	o-- /servlet/Logout (--> index.jsp)
 	|		|
 	|		|
 	|		o-> index.jsp > Home
@@ -81,6 +82,10 @@ STRUCKTUR
 	|		|
 	|		|
 	|		o-> index.jsp > registrierung erfolgreich
+	|
+	|
+	|
+	o-- /servlet/Katalog : Wird in index.jsp eingebunden : listed alle Produkte einer Warengruppe auf
 	|
 	|
 	|

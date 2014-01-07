@@ -43,9 +43,12 @@
 	
 	String userData = ("uid: "+(String)session.getAttribute("uid"))+" rolle: "+((String)session.getAttribute("urolle"))+" eingeloggt: "+((String)session.getAttribute("iEingeloggt"))+" name: "+((String)session.getAttribute("uname"))+" mail: "+((String)session.getAttribute("umail"));
 	
-	boolean debug = false;
+	boolean debug = true;
 	
 	/* =============== WELCHE SEITE =============== */
+
+
+	String wGruppe = request.getParameter("wg");
 	
 	String tmpPage = request.getParameter("p");
 	String myPage;
@@ -79,8 +82,6 @@
 	}
 	else if(myPage.equals("katalog")){
 		h1Title = "Katalog";
-
-		String wGruppe = request.getParameter("wg");
 
 		easyContend = false;
 	}
@@ -162,6 +163,7 @@
 	<p>DEBUG BOX</p>
 	<p>jSessionID = <%=jSessionID%> | tmp = <%=tmpPage%> | my = <%=myPage%></p>
 	<p><%=userData%></p>
+	<p><%=request.getRemoteHost()%></p>
 </div>
 <% } %>
 
@@ -169,7 +171,7 @@
 
 <div id="container">
 
-	<div id="kopf"><h1>nerd@m4ch1n3 &tilde;&dollar; </h1></div>
+	<div id="kopf"><h1><a href="index.jsp?p=home">nerd@m4ch1n3 &tilde;&dollar;</a></h1></div>
 
 	<div id="topbar">
 		<div id="snavi"><a href="index.jsp?p=home">Home</a> <a href="index.jsp?p=katalog">Katalog</a></div>
@@ -210,23 +212,10 @@ Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! 
 <% if(!easyContend) { 
 
 	if(myPage.equals("katalog")){
+			String path = "/servlet/Katalog?wg="+wGruppe;
 	%> 
-			<div class="produkt"><div class="produkt bild"><img src="kerze.png"></div>
-				<p class="beschreibung">dies ist eine wunderbare kerze, sehr gut geeignet um sich den arbend zu versüssen <br><a href="warenkorb">zum warenkorb hinzufüegen</a>
-				<div style="clear:left"></div>
-			</div>
-
-
-			<div class="produkt"><div class="produkt bild"><img src="kerze.png"></div>
-				<p class="beschreibung">dies ist eine wunderbare kerze, sehr gut geeignet um sich den arbend zu versüssen <br><a href="warenkorb">zum warenkorb hinzufüegen</a>
-				<div style="clear:left"></div>
-			</div>
-
-
-			<div class="produkt"><div class="produkt bild"><img src="kerze.png"></div>
-				<p class="beschreibung">dies ist eine wunderbare kerze, sehr gut geeignet um sich den arbend zu versüssen <br><a href="warenkorb">zum warenkorb hinzufüegen</a>
-				<div style="clear:left"></div>
-			</div>
+		
+		<jsp:include page="<%=path%>"/><br><br><br><%=path%>
 
 	<%
 	}
@@ -234,8 +223,6 @@ Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! 
 else { %>
 	<%=javaContend%>
 <% } %>
-
-
 			
 		</div>
 
