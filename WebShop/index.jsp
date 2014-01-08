@@ -12,11 +12,15 @@
 		response.sendRedirect("http://praxi.mt.haw-hamburg.de/~dw54/");
 	}*/
 	
-	String istEingeloggt = (String) session.getAttribute("iEingeloggt");
+	String istEingeloggt = "";
 
-	String benutzerRolle = (String) session.getAttribute("urolle");
+	String benutzerRolle = "";
 	
-	String benutzerName = (String)session.getAttribute("uname");
+	String benutzerName  = "";
+
+    istEingeloggt = (String) session.getAttribute("iEingeloggt");
+	benutzerRolle = (String) session.getAttribute("urolle");
+	benutzerName  = (String) session.getAttribute("uname");
 	
 	
 	/* =============== WEBSHOP SETUP =============== */
@@ -32,9 +36,9 @@
 
 	/* =============== PRAESENTATION MODE =============== */
 
-	if(benutzerRolle == ""){
+	/*if(benutzerRolle == ""){
 		String presentationMode = (String) session.getAttribute("preMode");
-	}
+	}*/
 	
 	
 	/* =============== DEBUG MODE =============== */
@@ -50,7 +54,6 @@
 
 	String wGruppe  = request.getParameter("wg");
 	String tmpError = request.getParameter("err");
-	String tmpAdmin = request.getParameter("adm");
 	
 	String tmpPage = request.getParameter("p");
 	String myPage;
@@ -64,9 +67,20 @@
 		ob der Contend im if-Statement oder
 		spaeter festgelegt wird
 	*/
-	
+
 	if(tmpPage == null) myPage = "home";
 	else myPage = tmpPage;
+
+	
+	String snavi = "";
+	String adminRolle = "1";
+	
+	if(adminRolle.equals(benutzerRolle)){
+		snavi = "<a style='color:red;' href='index.jsp?p=admin'>Adminbereich</a>";
+		if(myPage.equals("admin")) backend = true;
+		/* Nur der Admin kann das Backend anzeigen*/
+	}
+	else snavi = "&nbsp;";
 	
 	if(myPage.equals("home")){
 		h1Title = "Home";
@@ -75,7 +89,7 @@
 	}
 	else if(myPage.equals("wagen")){
 
-		if((String)session.getAttribute("hatEinkaufswagen").equals("ja")) easyContend = false;
+		if(((String)session.getAttribute("hatEinkaufswagen")).equals("ja")) easyContend = false;
 		else {
 			easyContend = true;
 			javaContend = "Dein Einkaufswagen scheint leer zu sein!";
@@ -90,7 +104,6 @@
 	}
 	else if(myPage.equals("katalog")){
 		h1Title = "Katalog";
-
 		easyContend = false;
 	}
 	else if(myPage.equals("checkout")){
@@ -111,6 +124,11 @@
 		h1Title = "Kontakt";
 		javaContend = "Kontakt unerw&uuml;nscht";
 		easyContend = true;
+	}
+	else if(myPage.equals("benutzer")){
+
+		h1Title = "Deine Daten";
+		easyContend = false;
 	}
 	else if(myPage.equals("err")){
 
@@ -133,17 +151,12 @@
 	}
 	else{
 		h1Title = "Fehler";
+		javaContend = "Seite nicht gefunden!";
 		easyContend = true;
 	}
 	
 	jspTitle = shopTitle+trennTitle+h1Title;
-
-	if(benutzerRolle.equals("1")){
-		String snavi = "<a href='index.jsp?p=admin'>Adminbereich</a>";
-		if(myPage.equals("admin")) backend = true;
-		/* Nur der Admin kann das Backend anzeigen*/
-	}
-	else String snavi = "";
+	
 
 
 	/* =============== AUSGABE =============== */
@@ -190,7 +203,7 @@
 		<div id="snavi">&nbsp;</div>
 		<div id="warenkorb">Warenkorb; bitte Einloggen</div>
 		<div id="logbox">
-			<form method='POST' action = '<%=serverURL%>/servlet/Login'>
+			<form method='POST' action='<%=serverURL%>/servlet/Login'>
 				<input type='email' name='email'><input type='password' name='pswd'><input id="absenden" type='submit' value='Login' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
 			</form>
 
@@ -199,7 +212,7 @@
 	else{
 %>
 		<div id="snavi"><%=snavi%></div>
-		<div id="warenkorb"><jsp:include page="/servlet/KlWarenkorb"/> <a href="">Du hast x1 Produkte (x2 &euro;) in deinem Warenkorb</a></div>
+		<div id="warenkorb">x <jsp:include page="/servlet/KlWarenkorb"/> x <a href="">Du hast x1 Produkte (x2 &euro;) in deinem Warenkorb</a></div>
 		<div id="logbox"> Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! <a href="<%=serverURL%>/servlet/Logout">Logout</a>
 <%
 	}
@@ -212,9 +225,10 @@
 
 		<div id="Navigation">
     		<ul>
-      			<li><a href="index.jsp?p=katalog&wg=1">USP-Sticks</a></li>
+      			<li><a href="index.jsp?p=katalog&wg=1">USB-Sticks</a></li>
      			<li><a href="index.jsp?p=katalog&wg=2">&Uuml;berleben</a></li>
      			<li><a href="index.jsp?p=katalog&wg=3">Brille und Co.</a></li>
+     			<li><a href="index.jsp?p=katalog&wg=4">Getr&auml;nke</a></li>
      		</ul>
 		</div>
 
@@ -238,14 +252,49 @@
 
 	<%
 	}
+	else if(myPage.equals("benutzer")){ /* ---------------------------------------------------------------------------- Benutzer Daten */
+			String path = "/servlet/Benutzer?f=benutzer";
+	%> 
+		
+		<jsp:include page="<%=path%>"/>
+
+	<%
+	}
+	else if((myPage.equals("admin"))&&(!backend)){
+		%>Keine Berechtigung<%
+	}
 	else if((myPage.equals("admin"))&&(backend)){ /* ------------------------------------------------------------------ Admin Bereich */
 			String path = "";
-			if      (tmpAdmin == "1") path= "/servlet/AdminOverview";
-			else if (tmpAdmin == "2") path= "/servlet/Benutzer";
-			else if (tmpAdmin == "3") path= "/servlet/Ware";
-			else if (tmpAdmin == "4") path= "/servlet/Bestellungen";
+
+
+			String tmpAdmin = request.getParameter("adm");
+			String myAdmin;
+
+			if(tmpAdmin == null) myAdmin = "2";
+			else myAdmin = tmpAdmin;
+
+			String adUID = request.getParameter("uid");
+
+					/* adm */
+
+			if      (myAdmin.equals("1"))	path = "/servlet/AdminOverview";
+			else if (myAdmin.equals("2"))	path = "/servlet/Benutzer?f=admls";
+			else if (myAdmin.equals("3"))	path = "/servlet/Ware";
+			else if (myAdmin.equals("4"))	path = "/servlet/Bestellungen";
+			else if (myAdmin.equals("5"))	path = "/servlet/Benutzer?f=admchange&usr="+adUID;
+			else 							path = "/servlet/Benutzer?f=admls";
 	%> 
-		<div id="AdminBox"><a href="index.jsp?p=admin&adm=1">Overview</a> <a href="index.jsp?p=admin&adm=2">Benutzer</a> <a href="index.jsp?p=admin&adm=3">Ware</a> <a href="index.jsp?p=admin&adm=4">Bestellungen</a></div>
+		<div id="AdminBox">
+			<ul>
+				<li><a href="index.jsp?p=admin&adm=1">Overview</a></li>
+				<li><a href="index.jsp?p=admin&adm=2">Benutzer</a></li>
+				<li><a href="index.jsp?p=admin&adm=3">Ware</a></li>
+				<li><a href="index.jsp?p=admin&adm=4">Bestellungen</a></li>
+			</ul>
+		</div>
+		<% if(debug) {%>
+		<%=path%><br><%=tmpAdmin%><br>
+		<% } %>
 		<jsp:include page="<%=path%>"/>
 
 	<%

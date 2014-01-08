@@ -19,8 +19,16 @@ public class Katalog extends HttpServlet
 
       res.setContentType("text/html");
       PrintWriter out = res.getWriter();
+      HttpSession session = req.getSession();
 
       String wGruppe = req.getParameter("wg");
+
+
+      //boolean istEingeloggt = false;
+      String logCheck ="";
+      logCheck = (String) session.getAttribute("iEingeloggt");
+      //if(logCheck.equals("true")) istEingeloggt = true;
+
 
       //DB-Treiber einbinden
       try { Class.forName("org.gjt.mm.mysql.Driver"); }
@@ -46,11 +54,11 @@ public class Katalog extends HttpServlet
              String pbestand = rs.getString("bestand");
 
              String zeile1 = "<div class='produkt'><p class='produktname'>"+pname+"</p><div class='bild'><img src='"+pid+".png'></div>";
-             String zeile2 = "<div class='beschreibung'><p>"+pbesch+"</p><p>Preis: "+ppreis+" &euro; Bestand: "+pbestand+"</p>"
-             String zeile3 = "<p>"+(istEingeloggt ? "<a href='/servlet/Einpacken?pr="+pid+"'>In den Warenkorb</a>" : "&nbsp;")+"</p>";
+             String zeile2 = "<div class='beschreibung'><p>"+pbesch+"</p><p>Preis: "+ppreis+" &euro; Bestand: "+pbestand+"</p>";
+             String zeile3 = "<p>"+(logCheck == "true" ? "<a href='/servlet/Einpacken?pr="+pid+"'>In den Warenkorb</a>" : "&nbsp;")+"</p>";
              String zeile4 = "</div><div style='clear:left'></div></div>";
 
-             out.println( ""+zeile1+zeile2+zeile3+zeile4 );
+             out.println( zeile1+zeile2+zeile3+zeile4 );
          }
 
 
@@ -63,6 +71,11 @@ public class Katalog extends HttpServlet
      }
      
    }
+  public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+    
+    doGet(req,res);
+  }
+
 }
 
 

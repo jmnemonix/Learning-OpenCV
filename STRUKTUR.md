@@ -114,9 +114,9 @@ Alle 		Konakt aufnehmen			Bonus
 
 Benutzer	Einloggen					Ja 				Login.java
 Benutzer	Ausloggen					Ja 				Logout.java
-Benutzer	Daten Einsehen 				Nein
+Benutzer	Daten Einsehen 				Nein			index.jsp & Benutzer.java
 
-Kunde		Kategorien Browsen			Jain			index.jsp und Katalog.java
+Kunde		Kategorien Browsen			Ja 				index.jsp und Katalog.java
 -----		Produkt Details Anzeigen 	----										>	Wird nicht benötigt, da der Katalog schon alle benötigten daten liefert
 Kunde		Registrieren				Idee
 Kunde		Ein Passwort generiert		Nein
@@ -127,7 +127,8 @@ Kunde		Warenkorb Anzeigen			Nein
 Kunde		Warenkorb Editieren 		Nein
 Kunde		Bestellen 					Nein
 
-Admin		Benutzer Verwalten			Nein
+Admin		Benutzer Anzeigen lassen	Nein
+Admin		Einen Nutzer bearbeiten		Nein
 Admin 		Waren Verwalten				Nein
 Admin		Bestellungen Verwalten		Nein
 Admin		Datenbank Zurücksetzen		Nein
@@ -152,6 +153,11 @@ ToDo
 - neue ware.sql einspielen
 - warengruppen in index.jsp updaten (Eigendlich Erledigt)
 
+- benutzer können ihre daten einsehen und editieren
+	A) eine Seite in index.jsp hinzufügen
+	B) Benutzer.java diese funktion hinzufügen
+	C) in index.jsp einbinden
+
 - Benutzer Verwalten
 	A) eine index.jsp Seite hinzufügen
 	B) eine Benutzer.java erstellen
@@ -165,8 +171,7 @@ ToDo
 
 - Module für Admin Bereich erstellen
 
-
-
+- struktur updaten
 
 
 
