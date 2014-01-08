@@ -39,16 +39,18 @@ public class Katalog extends HttpServlet
          {
 
             //  id name beschreibung warengruppe preis
-             String pid    = rs.getString("id");
-             String pname  = rs.getString("name");
-             String pbesch = rs.getString("beschreibung");
-             String ppreis  = rs.getString("preis");
+             String pid      = rs.getString("id");
+             String pname    = rs.getString("name");
+             String pbesch   = rs.getString("beschreibung");
+             String ppreis   = rs.getString("preis");
+             String pbestand = rs.getString("bestand");
 
-             String zeile1 ="<div class='produkt'><p class='produktname'>"+pname+"</p><div class='bild'><img src='"+pid+".png'></div>";
-             String zeile2 ="<p class='beschreibung'><p>"+pbesch+"</p><p>Preis: "+ppreis+" &euro; <a href='/servlet/Einpacken?pr="+pid+"'>In den Warenkorb</a>";
-             String zeile3 ="<div style='clear:left'></div></div>";
+             String zeile1 = "<div class='produkt'><p class='produktname'>"+pname+"</p><div class='bild'><img src='"+pid+".png'></div>";
+             String zeile2 = "<div class='beschreibung'><p>"+pbesch+"</p><p>Preis: "+ppreis+" &euro; Bestand: "+pbestand+"</p>"
+             String zeile3 = "<p>"+(istEingeloggt ? "<a href='/servlet/Einpacken?pr="+pid+"'>In den Warenkorb</a>" : "&nbsp;")+"</p>";
+             String zeile4 = "</div><div style='clear:left'></div></div>";
 
-             out.println( ""+zeile1+zeile2+zeile3 );
+             out.println( ""+zeile1+zeile2+zeile3+zeile4 );
          }
 
 

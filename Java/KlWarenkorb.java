@@ -1,6 +1,6 @@
 /*
 
-Login Management
+	Kleiner Wahrenkorb
 
 
 */
@@ -11,7 +11,7 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class Login extends HttpServlet{
+public class KlWarenkorb extends HttpServlet{
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		
@@ -64,7 +64,7 @@ public class Login extends HttpServlet{
 					session.invalidate();
 					session.setAttribute("iEingeloggt", "false");
 					
-					res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p='err'&err='100'" );
+					res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p='err'&e=003" );
 				}
 			}
 			
