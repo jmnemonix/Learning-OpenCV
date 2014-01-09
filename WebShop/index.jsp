@@ -200,24 +200,24 @@
 	if(istEingeloggt != "true")
 	{
 %>
-		<div id="snavi">&nbsp;</div>
-		<div id="warenkorb">Warenkorb; bitte Einloggen</div>
 		<div id="logbox">
 			<form method='POST' action='<%=serverURL%>/servlet/Login'>
 				<input type='email' name='email'><input type='password' name='pswd'><input id="absenden" type='submit' value='Login' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
 			</form>
+		</div>
+		<div id="snavi">&nbsp;</div>
+		<div id="warenkorb">Warenkorb; bitte Einloggen</div>
 
 <%
 	}
 	else{
 %>
+		<div id="logbox"> Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! <a href="<%=serverURL%>/servlet/Logout">Logout</a></div>
 		<div id="snavi"><%=snavi%></div>
 		<div id="warenkorb">x <jsp:include page="/servlet/KlWarenkorb"/> x <a href="">Du hast x1 Produkte (x2 &euro;) in deinem Warenkorb</a></div>
-		<div id="logbox"> Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! <a href="<%=serverURL%>/servlet/Logout">Logout</a>
 <%
 	}
 %>
-		</div>
 		<div style="clear:left"></div>
 	</div>
 	<div id="inhalt">
@@ -225,6 +225,7 @@
 
 		<div id="Navigation">
     		<ul>
+      			<li><a href="index.jsp">Home</a></li>
       			<li><a href="index.jsp?p=katalog&wg=1">USB-Sticks</a></li>
      			<li><a href="index.jsp?p=katalog&wg=2">&Uuml;berleben</a></li>
      			<li><a href="index.jsp?p=katalog&wg=3">Brille und Co.</a></li>
