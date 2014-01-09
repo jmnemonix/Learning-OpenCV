@@ -33,7 +33,25 @@
     border: 5px solid;
   }
   #AdminBox{
-    
+    border: 1px dashed red;
+  }
+  #AdminBox ul{
+    margin: 5px 5px;
+    padding: 2px;
+    text-align: center;
+  }
+  #AdminBox ul li {
+    list-style: none;
+    display: inline;
+    margin: 0.4em; padding: 0;
+  }
+  #AdminBox a{
+    color: red;
+    border:1px solid;
+    padding: 1px 2px;
+  }
+  #AdminBox a:hover{
+    color: #FD0;
   }
 
   #container {
@@ -66,13 +84,13 @@
   }
   #snavi {
     float: left;
-    width: 120px;
+    min-width: 10px;
     margin-left: 20px;
   }
   #logbox {
     text-align: right;
     float: right;
-    width: 700px;
+    /*width: 700px;*/
 
     padding-right: 40px;
   }
@@ -104,7 +122,8 @@
     font-size: 1em;
     float: left;
     width: 200px;
-    margin: 0 0 1.2em; padding: 0;
+    /*margin: 0 0 1.2em;*/
+    padding: 0;
   }
   #Navigation li {
     list-style: none;
