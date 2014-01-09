@@ -160,6 +160,10 @@
     margin: 0 0 1em 220px;
     padding: 0 1em;
   }
+  #contend .produkt{
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+  }
 
   #contend .produkt .bild{
     float: left;

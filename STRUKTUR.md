@@ -129,13 +129,13 @@ Kunde		Bestellen 					Nein
 
 Admin		Benutzer Anzeigen lassen	Ja
 Admin		Einen Nutzer bearbeiten		Jain
-Admin 		Waren auflisten				Nein
+Admin 		Waren auflisten				Ja
 Admin		Ware bearbeiten				Nein
 Admin		Ware löschen				Nein
 Admin		Bestellungen auflisten		Ja
-Admin		Bestellungen Versenden		Nein
+Admin		Bestellungen Versenden		Ja   ???
 Admin		Bestellung löschen			Nein
-Admin		Datenbank Zurücksetzen		Nein
+Admin		Datenbank Zurücksetzen		Nein <<< das kommt wohl zum Schluss
 Admin		News Verwalten				Bonus
 
 
