@@ -89,13 +89,19 @@
 	}
 	else if(myPage.equals("wagen")){
 
-		if(((String)session.getAttribute("hatEinkaufswagen")).equals("ja")) easyContend = false;
+		/*if(((String)session.getAttribute("hatEinkaufswagen")).equals("ja")) easyContend = false;
 		else {
 			easyContend = true;
 			javaContend = "Dein Einkaufswagen scheint leer zu sein!";
-		}
+		}*/
+		easyContend = false;
 
 		h1Title = "Einkaufswagen";
+	}
+	else if(myPage.equals("best")){
+		easyContend = false;
+
+		h1Title = "Deine Bestellungen";
 	}
 	else if(myPage.equals("reg")){
 		h1Title = "Registrieren";
@@ -140,10 +146,6 @@
 		h1Title = "Presentation Mode";
 		javaContend = "hier kommt der code";
 		easyContend = true;
-	}
-	else if(myPage.equals("benutzer")){
-		h1Title = "Benutzer";
-		easyContend = false;
 	}
 	else if(myPage.equals("admin")){
 		h1Title = "Backend";
@@ -246,7 +248,15 @@
 	<%
 	}
 	else if(myPage.equals("wagen")){ /* ------------------------------------------------------------------------------- Warenkorb */
-			String path = "/servlet/Einkaufswagen";
+			String path = "/servlet/Warenkorb";
+	%> 
+		
+		<jsp:include page="<%=path%>"/>
+
+	<%
+	}
+	else if(myPage.equals("best")){ /* ------------------------------------------------------------------------------- Bestellungen */
+			String path = "/servlet/Bestellungen";
 	%> 
 		
 		<jsp:include page="<%=path%>"/>
@@ -269,6 +279,7 @@
 	%> 
 		
 		<jsp:include page="<%=path%>"/>
+		<a href="index.jsp?p=best">Meine Bestellungen</a>
 
 	<%
 	}
@@ -292,7 +303,7 @@
 			if      (myAdmin.equals("1"))	path = "/servlet/AdminOverview";
 			else if (myAdmin.equals("2"))	path = "/servlet/Benutzer?f=admls";
 			else if (myAdmin.equals("3"))	path = "/servlet/Ware";
-			else if (myAdmin.equals("4"))	path = "/servlet/Bestellungen";
+			else if (myAdmin.equals("4"))	path = "/servlet/Bestellungen?f=list";
 			else if (myAdmin.equals("5"))	path = "/servlet/Benutzer?f=admchange&usr="+adUID;
 			else 							path = "/servlet/AdminOverview";
 	%> 

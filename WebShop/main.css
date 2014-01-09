@@ -25,6 +25,9 @@
     margin-top: 5px;
     text-align: center;
   }
+  table{
+    color:#4A4;
+  }
 
   #debug {
     /*display: none;*/
