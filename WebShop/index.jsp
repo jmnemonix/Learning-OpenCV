@@ -100,7 +100,7 @@
 	else if(myPage.equals("reg")){
 		h1Title = "Registrieren";
 		javaContend = "Du kannst dich momentan NICHT registrieren<br>sp&auml;ter erscheint hier ein Formular";
-		easyContend = true;
+		easyContend = false;
 	}
 	else if(myPage.equals("katalog")){
 		h1Title = "Katalog";
@@ -206,7 +206,7 @@
 			</form>
 		</div>
 		<div id="snavi">&nbsp;</div>
-		<div id="warenkorb">Warenkorb; bitte Einloggen</div>
+		<div id="warenkorb">Warenkorb: bitte Einloggen</div>
 
 <%
 	}
@@ -214,7 +214,7 @@
 %>
 		<div id="logbox"> Hallo <a href="index.jsp?p=benutzer"><%=benutzerName%></a>! Du bist eingeloggt! <a href="<%=serverURL%>/servlet/Logout">Logout</a></div>
 		<div id="snavi"><%=snavi%></div>
-		<div id="warenkorb">x <jsp:include page="/servlet/KlWarenkorb"/> x <a href="">Du hast x1 Produkte (x2 &euro;) in deinem Warenkorb</a></div>
+		<div id="warenkorb"><jsp:include page="/servlet/KlWarenkorb"/></div>
 <%
 	}
 %>
@@ -253,6 +253,17 @@
 
 	<%
 	}
+	else if(myPage.equals("reg")){ /* --------------------------------------------------------------------------------- Registrieren Formular */
+	%> 
+
+		<form method='POST' action='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Registrieren'>
+			<p>Dein Name: <input type='text' name='name' ></p>
+			<p>Deine E-Mail: <input type='email' name='email'></p>
+			<input type='submit' value='Registrieren' name='register'>
+		</form>
+
+	<%
+	}
 	else if(myPage.equals("benutzer")){ /* ---------------------------------------------------------------------------- Benutzer Daten */
 			String path = "/servlet/Benutzer?f=benutzer";
 	%> 
@@ -283,7 +294,7 @@
 			else if (myAdmin.equals("3"))	path = "/servlet/Ware";
 			else if (myAdmin.equals("4"))	path = "/servlet/Bestellungen";
 			else if (myAdmin.equals("5"))	path = "/servlet/Benutzer?f=admchange&usr="+adUID;
-			else 							path = "/servlet/Benutzer?f=admls";
+			else 							path = "/servlet/AdminOverview";
 	%> 
 		<div id="AdminBox">
 			<ul>

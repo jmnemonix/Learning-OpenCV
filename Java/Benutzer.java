@@ -65,7 +65,7 @@ public class Benutzer extends HttpServlet{
 						String zeile2 = "<p>Dein Name: <input type='text' name='uname' value='"+uname+"'></p>";
 						String zeile3 = "<p>Deine E-Mail: <input type='text' name='uname' value='"+umail+"'></p>";
 						String zeile4 = "<p>Dein Passwort&auml;ndern: Aktuell: <input type='password' name='pswda'> Neu: <input type='password' name='pswdb'> Nochmal: <input type='password' name='pswdc'></p>";
-						String zeile5 = "<input id='update' type='submit' value='&Auml;ndern' name='absenden'></form>";
+						String zeile5 = "<input id='update' type='submit' value='&Auml;ndern' name='absenden' disabled></form>";
 
 						out.println( zeile1+zeile2+zeile3+zeile4+zeile5);
 
@@ -99,7 +99,7 @@ public class Benutzer extends HttpServlet{
 						String ukommentar = rs.getString("bemerkung");
 						String upass      = rs.getString("passwort");
 
-						String zeile1 = "<form method='POST' action='http://praxi.mt.haw-hamburg.de/servlet/Benutzer'><p>Deine Kundennummer: "+uid+" und deine Rolle: "+urolle +" <input id='adminUpdate' type='submit' value='Aktivieren' name='usrAktiv'> <input id='mAdmin' type='submit' value='Make Admin' name='mAdmin'></p>";
+						String zeile1 = "<form method='POST' action='http://praxi.mt.haw-hamburg.de/servlet/Benutzer'><p>Deine Kundennummer: "+uid+" und deine Rolle: "+urolle +" ";//<input id='adminUpdate' type='submit' value='Aktivieren' name='usrAktiv'> <input id='mAdmin' type='submit' value='Make Admin' name='mAdmin'></p>";
 						String zeile2 = "<p>Name: <input type='text' name='uname' value='"+uname+"'></p>";
 						String zeile3 = "<p>E-Mail: <input type='text' name='uname' value='"+umail+"'></p>";
 						String zeile4 = "<p>Passwort: <input type='text' name='pswd' value='"+upass+"'> </p>";

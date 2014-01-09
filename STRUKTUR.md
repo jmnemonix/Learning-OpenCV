@@ -112,23 +112,25 @@ Alle 		News Anzeigen 				Bonus
 Alle 		AGB, Impressum Anzeigen 	Ja 				index.jsp
 Alle 		Konakt aufnehmen			Bonus
 
+Alle 		Fehler angezeigt			Nein			index.jsp
+
 Benutzer	Einloggen					Ja 				Login.java
 Benutzer	Ausloggen					Ja 				Logout.java
-Benutzer	Daten Einsehen 				Nein			index.jsp & Benutzer.java
+Benutzer	Daten Einsehen 				Ja				index.jsp & Benutzer.java
+Benutzer 	Daten ändern 				Nein			Benutzer.java
 
 Kunde		Kategorien Browsen			Ja 				index.jsp und Katalog.java
------		Produkt Details Anzeigen 	----										>	Wird nicht benötigt, da der Katalog schon alle benötigten daten liefert
-Kunde		Registrieren				Idee
-Kunde		Ein Passwort generiert		Nein
+Kunde		Registrieren				Ja
+Kunde		Ein Passwort generiert		Ja
 Kunde		Waren in Warenkorb			Nein
-			Dabei Bestandprüffen		Nein
+			Dabei Bestandprüffen		Bonus
 Kunde		Anzahl Ware zum Warenkorb 	Nein			Katalog.java
 Kunde		Warenkorb Anzeigen			Nein
 Kunde		Warenkorb Editieren 		Nein
 Kunde		Bestellen 					Nein
 
-Admin		Benutzer Anzeigen lassen	Nein
-Admin		Einen Nutzer bearbeiten		Nein
+Admin		Benutzer Anzeigen lassen	Ja
+Admin		Einen Nutzer bearbeiten		Jain
 Admin 		Waren Verwalten				Nein
 Admin		Bestellungen Verwalten		Nein
 Admin		Datenbank Zurücksetzen		Nein
@@ -140,32 +142,18 @@ ToDo
 =======
 
 - Diese Datei in eine Vernünftige Form bringen
+
 - Einpacken.java bearbeiten
 - Warenkorb.java bearbeiten
-- Dem Kunden die Möglichkeit geben, sich zu regestrieren
-	A) Formular erstellen und in index.jsp einpflegen
-	B) Registrierung.java bearbeiten
-		- daten validieren
-		- email adresse auf vorhandensein prüffen
-		- ggf. daten in DB schreiben
-		- generiertes passwort ausgeben
-- im katalog überprüffen ob besucher eingeloggt und ggf. felder ausblenden
-- neue ware.sql einspielen
-- warengruppen in index.jsp updaten (Eigendlich Erledigt)
+
+
 
 - benutzer können ihre daten einsehen und editieren
-	A) eine Seite in index.jsp hinzufügen
+	A) eine Seite in index.jsp hinzufügen (erledigt)
 	B) Benutzer.java diese funktion hinzufügen
 	C) in index.jsp einbinden
 
 - Benutzer Verwalten
-	A) eine index.jsp Seite hinzufügen
-	B) eine Benutzer.java erstellen
-	C) Benutzer.java gibt eine Liste aller Benutzer aus ODER eine bearbeiten formular für einen einzelnen ODER schreibt änderungen in dei DB
-		- BenutzerID BenutzerName BenutzerMail Rolle bemerkung [aktivieren] [bearbeiten] [löschen]
-		- id name email passwort bemerkung rolle [update]
-		- daten in datenbank schreiben
-		(Könnte diese Datei auch die Aufgaben von Registrierung.java übernehmen???)
 
 - Presentation mode hinzufügen
 
@@ -185,6 +173,8 @@ Nummer 			Bedeutung
 
 1				Test Fehler
 100				Zugangsdaten nicht richtig
+101				EMail schon im System
+
 404				Seite nicht gefunden
 
 999				Die Ware ist leider nicht mehr verfügbar
