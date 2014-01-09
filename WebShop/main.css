@@ -37,24 +37,35 @@
   }
   #AdminBox{
     border: 1px dashed red;
+    margin-bottom: 20px;
+  }
+  #AdminBox a{
+    border: 1px solid;
+    padding: 1px 2px;
   }
   #AdminBox ul{
     margin: 5px 5px;
-    padding: 2px;
-    text-align: center;
+    /*padding: 2px;*/
+    /*text-align: center;*/
+    padding-right: 20px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid red;
   }
   #AdminBox ul li {
     list-style: none;
     display: inline;
-    margin: 0.4em; padding: 0;
+    padding: 0;
   }
-  #AdminBox a{
+  #AdminBox ul li a{
     color: red;
-    border:1px solid;
     padding: 1px 2px;
+    margin: 10px;
   }
   #AdminBox a:hover{
     color: #FD0;
+  }
+  #AdminBox tr:hover {
+    background-color: #333;
   }
 
   #container {
@@ -162,4 +173,12 @@
     color:#2d491f;
     background-color: black;
     border-top: 1px solid #2d491f;
+  }
+
+  .bestellung {
+    border: 1px solid #2d491f;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    padding: 5px;
   }

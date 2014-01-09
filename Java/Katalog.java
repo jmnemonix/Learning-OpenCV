@@ -55,7 +55,7 @@ public class Katalog extends HttpServlet
 
              String zeile1 = "<div class='produkt'><p class='produktname'>"+pname+"</p><div class='bild'><img src='"+pid+".png'></div>";
              String zeile2 = "<div class='beschreibung'><p>"+pbesch+"</p><p>Preis: "+ppreis+" &euro; Bestand: "+pbestand+"</p>";
-             String zeile3 = "<p>"+(logCheck == "true" ? "<a href='/servlet/Einpacken?pr="+pid+"'>In den Warenkorb</a>" : "&nbsp;")+"</p>";
+             String zeile3 = "<p>"+(logCheck == "true" ? "<a href='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Einpacken?pr="+pid+"'>Einpacken</a>" : "&nbsp;")+"</p>";
              String zeile4 = "</div><div style='clear:left'></div></div>";
 
              out.println( zeile1+zeile2+zeile3+zeile4 );

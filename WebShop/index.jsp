@@ -96,7 +96,7 @@
 		}*/
 		easyContend = false;
 
-		h1Title = "Einkaufswagen";
+		h1Title = "Warenkorb";
 	}
 	else if(myPage.equals("best")){
 		easyContend = false;
@@ -293,18 +293,20 @@
 			String tmpAdmin = request.getParameter("adm");
 			String myAdmin;
 
-			if(tmpAdmin == null) myAdmin = "2";
+			if(tmpAdmin == null) myAdmin = "1";
 			else myAdmin = tmpAdmin;
 
 			String adUID = request.getParameter("uid");
+			String adPID = request.getParameter("pid");
 
 					/* adm */
 
 			if      (myAdmin.equals("1"))	path = "/servlet/AdminOverview";
 			else if (myAdmin.equals("2"))	path = "/servlet/Benutzer?f=admls";
-			else if (myAdmin.equals("3"))	path = "/servlet/Ware";
+			else if (myAdmin.equals("3"))	path = "/servlet/Ware?f=admls";
 			else if (myAdmin.equals("4"))	path = "/servlet/Bestellungen?f=list";
 			else if (myAdmin.equals("5"))	path = "/servlet/Benutzer?f=admchange&usr="+adUID;
+			else if (myAdmin.equals("6"))	path = "/servlet/Ware?f=admchange&pr="+adPID;
 			else 							path = "/servlet/AdminOverview";
 	%> 
 		<div id="AdminBox">
@@ -314,11 +316,9 @@
 				<li><a href="index.jsp?p=admin&adm=3">Ware</a></li>
 				<li><a href="index.jsp?p=admin&adm=4">Bestellungen</a></li>
 			</ul>
+			<jsp:include page="<%=path%>"/>
 		</div>
-		<% if(debug) {%>
-		<%=path%><br><%=tmpAdmin%><br>
-		<% } %>
-		<jsp:include page="<%=path%>"/>
+		
 
 	<%
 	}

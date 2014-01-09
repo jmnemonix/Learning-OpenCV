@@ -9,6 +9,13 @@ public class Logout extends HttpServlet{
 
 		HttpSession session = req.getSession();
 
+		
+		session.setAttribute("iEingeloggt", "false");
+		session.setAttribute("uname","");
+		session.setAttribute("umail","");
+		session.setAttribute("urolle","");
+		session.setAttribute("uid","");
+
 		session.invalidate();
 
 		res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/" );

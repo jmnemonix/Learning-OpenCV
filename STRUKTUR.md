@@ -122,17 +122,19 @@ Benutzer 	Daten ändern 				Nein			Benutzer.java
 Kunde		Kategorien Browsen			Ja 				index.jsp und Katalog.java
 Kunde		Registrieren				Ja
 Kunde		Ein Passwort generiert		Ja
-Kunde		Waren in Warenkorb			Nein
-			Dabei Bestandprüffen		Bonus
-Kunde		Anzahl Ware zum Warenkorb 	Nein			Katalog.java
-Kunde		Warenkorb Anzeigen			Nein
+Kunde		Waren in Warenkorb			Ja
+Kunde		Warenkorb Anzeigen			Ja
 Kunde		Warenkorb Editieren 		Nein
 Kunde		Bestellen 					Nein
 
 Admin		Benutzer Anzeigen lassen	Ja
 Admin		Einen Nutzer bearbeiten		Jain
-Admin 		Waren Verwalten				Nein
-Admin		Bestellungen Verwalten		Nein
+Admin 		Waren auflisten				Nein
+Admin		Ware bearbeiten				Nein
+Admin		Ware löschen				Nein
+Admin		Bestellungen auflisten		Ja
+Admin		Bestellungen Versenden		Nein
+Admin		Bestellung löschen			Nein
 Admin		Datenbank Zurücksetzen		Nein
 Admin		News Verwalten				Bonus
 

@@ -69,7 +69,7 @@ public class Warenkorb extends HttpServlet{
 					}
 					st2.close();
 
-					ausgabe = ausgabe+"\n<tr><th>"+position+"</th><th>"+bezeichnung+"</th><th><input type='text' name='name' value='"+anzahl+"'></th><th>"+preis+" &euro;</th><th>"+(anzahl*preis)+" &euro;</th><th><input type='checkbox' name='"+userID+"' value='"+wareID+"'></th></tr>";
+					ausgabe = ausgabe+"\n<tr><th>"+position+"</th><th>"+bezeichnung+"</th><th><input type='hidden' name='id' value='"+wareID+"'><input type='text' name='anzahl' value='"+anzahl+"'></th><th>"+preis+" &euro;</th><th>"+(anzahl*preis)+" &euro;</th><th><input type='checkbox' name='"+userID+"' value='"+wareID+"'></th></tr>";
 
 					summeWare = summeWare+anzahl;
 					summe = summe+(anzahl*preis);

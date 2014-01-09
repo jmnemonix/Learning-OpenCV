@@ -1,6 +1,13 @@
 /*
 
-Katalog
+Benutzerverwaltung
+
+Funktionen 		Umgesetzt
+- benutzer 		ja
+- change		nein
+- admls			nein
+- delete 		nein
+- activate 		nein
 
 
 */
@@ -11,70 +18,101 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class LogIn extends HttpServlet{
-
-	PrintWriter out = null;
-	HttpSession session = null;
-
+public class Ware extends HttpServlet{
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-
-		session = req.getSession();
-	
-		res.setContentType("text/html");
-		out = res.getWriter();
-
-		String warengruppe = req.getParameter("wgruppe");
-
-
-
-	}
-
-	public void getByWarengruppe(int wgruppe){
 		
 		String sqlUsr  = "dw54";
-		String sqlPswd = "";
+    	String sqlPswd = "";
+	
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		HttpSession session = req.getSession();
 
-		String WarenURL = "http://praxi.mt.haw-hamburg.de/~dw54/"; // Ware in JSP EInpflegen
-		
-		
-		try{
-			Class.forName("org.gjt.mm.mysql.Driver");
-		}
-		catch (ClassNotFoundException e){
-			out.println("DB-Treiber nicht da!");
-		}
+		String funktion  = req.getParameter("f");
+		String userRolle = (String) session.getAttribute("urolle");
 
-		try{
-			
+		String logCheck = (String) session.getAttribute("iEingeloggt");
+
+
+		//out.println("system message: funktion: ("+funktion+") logCheck: ("+logCheck+") userID: ("+userID+")");
+
+
+		//DB-Treiber einbinden
+		try { Class.forName("org.gjt.mm.mysql.Driver"); }
+		catch (ClassNotFoundException e) { out.println("DB-Treiber nicht da!"); }
+
+		try
+		{
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
-
 			Statement st = con.createStatement();
 
-			
-			ResultSet rs = st.executeQuery("SELECT * FROM ware WHERE warengruppe LIKE '"+wgruppe+"'");
+			if(logCheck.equals("true")){
+				if ((funktion.equals("admchange"))&&(userRolle.equals("1"))) { // -------------------------------------------------------------- der Admin aendert ein Produkt
+					String produktID = req.getParameter("pr");
 
-			while(rs.next()){
-				int		wid				= (int)		rs.getString("id");
-				String	wname			= 			rs.getString("name");
-				//String	wbeschreibung	= 			rs.getString("beschreibung");
-				//int		wbestand		= (int) 	rs.getString("bestand");
-				//int		wverkaufbar		= (int) 	rs.getString("verkaufbar");
-				//int		warengruppe		= (int)		rs.getString("warengruppe"); // achtung variable umbennenen, da schon vorhanden
-				float	wpreis			= (float)	rs.getString("preis");
+					ResultSet rs = st.executeQuery("SELECT * FROM ware WHERE id LIKE '"+produktID+"'");
 
-				out.println("<div class='ware' id='"+wid+"'><img src='"+wid+".jpg' alt='"+wid+".jpg'><p><a class='wname' href='"+WarenURL+"?w="+wid+"'>"+wname+"</a><br>Preis:<span class='katpreis'>"+wpreis+"</span></p></div>");
+					while(rs.next())
+					{
+						String pid    = rs.getString("id");
+						String pname  = rs.getString("name");
+						String pwg    = rs.getString("warengruppe");
+						String pbest  = rs.getString("bestand");
+						String pbesch = rs.getString("beschreibung");
+						String ppreis = rs.getString("preis");
+
+						String zeile0 = "<form method='POST' action='http://praxi.mt.haw-hamburg.de/servlet/Ware'><table border='0'>";
+						String zeile1 = "<tr><th>Produkt Nr</th><th>"+pid+"<input type='hidden' name='pid' value="+pid+"></th></tr><tr><th>Warengruppe</th><th><input type='text' name='pname' value='"+pwg+"'></th></tr>";
+						String zeile2 = "<tr><th>Name</th><th><input type='text' name='pname' value='"+pname+"'></th></tr>";
+						String zeile3 = "<tr><th>Bestand</th><th><input type='text' name='bestand' value='"+pbest+"'></th></tr>";
+						String zeile4 = "<tr><th>Beschreibung</th><th><input type='text' name='beschreib' value='"+pbesch+"'></th></tr>";
+						String zeile5 = "<tr><th>Preis</th><th><input type='text' name='preis' value='"+ppreis+"'></th></tr>";
+						String zeile6 = "</table><input type='submit' value='&Auml;ndern' name='pUpd'><input type='submit' value='L&ouml;schen' name='pDel'></form>";
+
+						out.println( zeile0+zeile1+zeile2+zeile3+zeile4+zeile5+zeile6);
+
+					}
+
+					st.close();
+					con.close();
+
+				}
+				else if ((funktion.equals("admls"))&&(userRolle.equals("1"))) { // ------------------------------------------------------------------ Produkte auflisten
+
+					ResultSet rs = st.executeQuery("SELECT * FROM `ware`");
+					out.println("<table border='0'><tr><th>ID</th><th>Warengruppe</th><th>Name</th><th>Bestand</th><th>Preis</th><th>Optionen</th></tr>");
+
+					while(rs.next())
+					{
+						String pid    = rs.getString("id");
+						String pname  = rs.getString("name");
+						String pwg    = rs.getString("warengruppe");
+						String pbest  = rs.getString("bestand");
+						String ppreis = rs.getString("preis");
+
+						
+						out.println("<tr><th>"+pid+"</th><th>"+pwg+"</th><th>"+pname+"</th><th>"+pbest+"</th><th>"+ppreis+" &euro;</th><th><a href='index.jsp?p=admin&adm=6&pid="+pid+"'>Bearbeiten</a></th></tr>");
+
+					}
+					out.println("</table>");
+
+					st.close();
+					con.close();
+				}
+				else out.println("Keine Daten ...");
 			}
+			else out.println("kein logcheck");
+		}
+		catch (Exception e)
+		{
+			out.println(" MySQL Exception: " + e.getMessage());
+		}
 
-			
-			st.close();
-			con.close();
-		}
-		catch (Exception e){
-			out.println(" Exception: " + e.getMessage());
-		}
+		
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		
 		doGet(req,res);
 	}
 }

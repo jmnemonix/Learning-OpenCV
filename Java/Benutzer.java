@@ -63,7 +63,7 @@ public class Benutzer extends HttpServlet{
 
 						String zeile1 = "<form method='POST' action='http://praxi.mt.haw-hamburg.de/servlet/Benutzer'><p>Deine Kundennummer: "+uid+" und deine Rolle: "+urolle +"</p>";
 						String zeile2 = "<p>Dein Name: <input type='text' name='uname' value='"+uname+"'></p>";
-						String zeile3 = "<p>Deine E-Mail: <input type='text' name='uname' value='"+umail+"'></p>";
+						String zeile3 = "<p>Deine E-Mail: <input type='email' name='uname' value='"+umail+"'></p>";
 						String zeile4 = "<p>Dein Passwort&auml;ndern: Aktuell: <input type='password' name='pswda'> Neu: <input type='password' name='pswdb'> Nochmal: <input type='password' name='pswdc'></p>";
 						String zeile5 = "<input id='update' type='submit' value='&Auml;ndern' name='absenden' disabled></form>";
 
