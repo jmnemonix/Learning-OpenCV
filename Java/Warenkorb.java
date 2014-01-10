@@ -24,6 +24,9 @@ public class Warenkorb extends HttpServlet{
 		PrintWriter out = res.getWriter();
 		String userID    = (String) session.getAttribute("uid");
 
+		String funktion = "";
+		funktion  = req.getParameter("f");
+
 		try{ Class.forName("org.gjt.mm.mysql.Driver"); }
 		catch (ClassNotFoundException e){ out.println("DB-Treiber nicht da!"); }
 
@@ -31,6 +34,17 @@ public class Warenkorb extends HttpServlet{
 			Da er sich dann nicht mehr registrieren darf */
 		String logCheck = "";
 		logCheck = (String) session.getAttribute("iEingeloggt");
+/*
+		if((funktion.equals("aendern"))&&(logCheck.equals("true"))) {
+			String wareID   = req.getParameter("id");
+			String anzahl   = req.getParameter("anzahl");
+			String aendern  = req.getParameter("aendern");
+			String loeschen = req.getParameter("loeschen");
+
+			out.println("eingabe: "+wareID+" - "+anzahl+" - "+aendern+" - "+loeschen);
+
+		}*/
+		
 		if(logCheck.equals("true")) {
 			try{
 				
@@ -49,7 +63,7 @@ public class Warenkorb extends HttpServlet{
 				int 	position    = 0;
 				String  ausgabe     = "";
 
-				ausgabe = ausgabe+"<div class='Warenkorb'><form method='POST' action='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Bestellungen'>Adresse: <input type='text' name='adresse'>\n";
+				ausgabe = ausgabe+"<div class='Warenkorb'>";
 				ausgabe = ausgabe + "<table border='0'><tr><th>Position</th><th>Bezeichnung</th><th>Anzahl</th><th>Preis</th><th>Betrag</th><th>L&ouml;schen</th></tr>\n";
 
 				while(rs1.next()){
@@ -69,7 +83,7 @@ public class Warenkorb extends HttpServlet{
 					}
 					st2.close();
 
-					ausgabe = ausgabe+"\n<tr><th>"+position+"</th><th>"+bezeichnung+"</th><th><input type='hidden' name='id' value='"+wareID+"'><input type='text' name='anzahl' value='"+anzahl+"'></th><th>"+preis+" &euro;</th><th>"+(anzahl*preis)+" &euro;</th><th><input type='checkbox' name='"+userID+"' value='"+wareID+"'></th></tr>";
+					ausgabe = ausgabe+"\n<tr><th><form method='POST' action='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Warenkorb'><input type='hidden' name='f' value='aendern'>"+position+"</th><th>"+bezeichnung+"</th><th><input type='hidden' name='id' value='"+wareID+"'><input type='text' name='anzahl' value='"+anzahl+"'></th><th>"+preis+" &euro;</th><th>"+(anzahl*preis)+" &euro;</th><th><input type='submit' value='Aendern' name='aendern' disabled><input type='submit' value='Loeschen' name='loeschen' disabled></form></th></tr>";
 
 					summeWare = summeWare+anzahl;
 					summe = summe+(anzahl*preis);
@@ -80,8 +94,8 @@ public class Warenkorb extends HttpServlet{
 				ausgabe = ausgabe+"\n<tr><th>Summe</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>"+summe+" &euro;</th><th>&nbsp;</th></tr>";
 
 				ausgabe = ausgabe+"\n</table>";
-				ausgabe = ausgabe+"\n<input type='submit' value='&Auml;ndern' name='aendern'><input type='submit' value='Bestellen' name='bestellen'>";
-				ausgabe = ausgabe+"</form></div>";
+				ausgabe = ausgabe+"\n<form method='GET' action='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Bestellen'>Adresse: <input type='text' name='adresse'>\n<input type='submit' value='Bestellen' name='bestellen'><input type='submit' value='Leeren' name='leeren'></table>";
+				ausgabe = ausgabe+"</div>";
 
 				out.println(ausgabe);
 				

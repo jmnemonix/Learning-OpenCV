@@ -49,11 +49,12 @@ public class Katalog extends HttpServlet
             //  id name beschreibung warengruppe preis
              String pid      = rs.getString("id");
              String pname    = rs.getString("name");
+             String pbild    = rs.getString("bild");
              String pbesch   = rs.getString("beschreibung");
              String ppreis   = rs.getString("preis");
              String pbestand = rs.getString("bestand");
 
-             String zeile1 = "<div class='produkt'><p class='produktname'>"+pname+"</p><div class='bild'><img src='"+pid+".png'></div>";
+             String zeile1 = "<div class='produkt'><p class='produktname'>"+pname+"</p><div class='bild'><img src='"+pbild+"'></div>";
              String zeile2 = "<div class='beschreibung'><p>"+pbesch+"</p><p>Preis: "+ppreis+" &euro; Bestand: "+pbestand+"</p>";
              String zeile3 = "<p>"+(logCheck == "true" ? "<a href='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Einpacken?pr="+pid+"'>Einpacken</a>" : "&nbsp;")+"</p>";
              String zeile4 = "</div><div style='clear:left'></div></div>";

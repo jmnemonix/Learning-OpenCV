@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `ware` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
-  `bild` varchar(10) NOT NULL,
+  `bild` varchar(22) NOT NULL,
   `beschreibung` varchar(250) NOT NULL,
   `warengruppe` int(3) NOT NULL,
   `bestand` int(5) NOT NULL,

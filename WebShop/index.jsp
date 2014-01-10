@@ -232,6 +232,9 @@
      			<li><a href="index.jsp?p=katalog&wg=2">&Uuml;berleben</a></li>
      			<li><a href="index.jsp?p=katalog&wg=3">Brille und Co.</a></li>
      			<li><a href="index.jsp?p=katalog&wg=4">Getr&auml;nke</a></li>
+     			<li><a href="index.jsp?p=katalog&wg=5">Batches</a></li>
+     			<li><a href="index.jsp?p=katalog&wg=6">R&auml;tsel</a></li>
+     			<li><a href="index.jsp?p=katalog&wg=7">Sammlerst&uuml;cke</a></li>
      		</ul>
 		</div>
 

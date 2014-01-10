@@ -103,6 +103,7 @@ public class Ware extends HttpServlet{
 						out.println("<tr><th>"+pid+"</th><th>"+pwg+"</th><th>"+pname+"</th><th>"+pbest+"</th><th>"+ppreis+" &euro;</th><th><a href='index.jsp?p=admin&adm=6&pid="+pid+"'>Bearbeiten</a></th></tr>");
 
 					}
+					//out.println("<tr><th>&nbsp;</th><th>"+pwg+"</th><th>"+pname+"</th><th>"+pbest+"</th><th>"+ppreis+" &euro;</th><th><a href='index.jsp?p=admin&adm=6&pid="+pid+"'>Bearbeiten</a></th></tr>");
 					out.println("</table>");
 
 					st.close();
