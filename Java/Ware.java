@@ -78,6 +78,14 @@ public class Ware extends HttpServlet{
 					con.close();
 
 				}
+				else if ((funktion.equals("delete"))&&(userRolle.equals("1"))) { // ----------------------------------------------------------------- Produkt Loeschen
+					String produktID = req.getParameter("pr");
+
+					int i = st.executeUpdate("DELETE FROM ware WHERE id = "+produktID);
+
+					out.println("Produkt ID: "+produktID+"<br> L&ouml;sch-Status: "+i);
+
+				}
 				else if ((funktion.equals("admls"))&&(userRolle.equals("1"))) { // ------------------------------------------------------------------ Produkte auflisten
 
 					ResultSet rs = st.executeQuery("SELECT * FROM `ware`");
