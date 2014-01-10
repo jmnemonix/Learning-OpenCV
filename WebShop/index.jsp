@@ -168,7 +168,7 @@
 <HTML>
 <HEAD>
 	<TITLE><%=jspTitle%></TITLE>
-	<link rel="stylesheet" href="<%=CStyleS%>">
+	<link rel="stylesheet" title="Std" href="<%=CStyleS%>">
 
 <% /* if(debug) {%><meta http-equiv="refresh" content="2; URL=index.jsp"><% } */ %>
 
