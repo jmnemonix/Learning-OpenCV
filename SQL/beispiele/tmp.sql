@@ -13,9 +13,10 @@ SELECT studenten.name, fachnoten.fach, fachnoten.note
   FROM studenten, fachnoten
     WHERE studenten.matrikelnr = fachnoten.matrikelnr;
 
-SELECT `bestellungen`.`id`, `bestellungen`.`adresse`, `bestellungen`.`status`, `bestWare`.`position`, `bestWare`.`anzahl`, `ware`.`preis`, `ware`.`name`
+SELECT `bestellungen`.`id`, `bestellungen`.`kundeID`, `bestellungen`.`adresse`, `bestellungen`.`status`, `bestWare`.`position`, `bestWare`.`anzahl`, `ware`.`preis`, `ware`.`name`
 	FROM `ware`, `bestellungen`, `bestWare`
-		WHERE `bestellungen`.`kundeID` = '1' AND `bestWare`.`bestellungID` = `bestellung`.`id` AND `bestWare`.`wareID` = `ware`.`ID`;
+		WHERE `bestellungen`.`kundeID` = '1' AND `bestWare`.`bestellungID` = `bestellungen`.`id` AND `bestWare`.`wareID` = `ware`.`ID`
+			ORDER BY `bestellungen`.`id`, `bestWare`.`position`;
 
 >>>>>>>
 1 	rdbstr. 12 202020 Hamburg 	3 	1 	5 	200.02 	2 TB Oranen USB-Stick
