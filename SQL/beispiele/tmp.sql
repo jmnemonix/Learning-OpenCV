@@ -7,3 +7,8 @@ INSERT INTO `bestellungen` (`id` ,`kundeID` ,`adresse` ,`bemerkung` ,`status`)VA
 INSERT INTO `bestWare` (`bestellungID` ,`position` ,`wareID` ,`anzahl`)VALUES ('3', '1', '11', '5');
 
 DELETE * FROM `warenkorb` WHERE `warenkorb`.`kundeID` = 1
+
+# sehr schöne verknüpfung von datensätzen zu gebrauchen bei bestellungen und bestWare
+SELECT studenten.name, fachnoten.fach, fachnoten.note
+  FROM studenten, fachnoten
+    WHERE studenten.matrikelnr = fachnoten.matrikelnr;
