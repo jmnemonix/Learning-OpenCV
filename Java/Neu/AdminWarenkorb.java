@@ -70,7 +70,7 @@ public class AdminWarenkorb extends HttpServlet{
 					int    anzahl  = rs1.getInt("anzahl");
 					String wName   = rs1.getString("name");
 
-					ausgabe = ausgabe+"\n<tr><th><a href='index.jsp?p=admin&adm=5&uid="+kundeID+"'>+"+kundeID+"</a></th><th>"+wareID+"</th><th>"+wName+"</th><th>"+anzahl+"</th><th>&nbsp;</th></tr>";
+					ausgabe = ausgabe+"\n<tr><th><a href='index.jsp?p=admin&adm=5&uid="+kundeID+"'>"+kundeID+"</a></th><th>"+wareID+"</th><th>"+wName+"</th><th>"+anzahl+"</th><th>&nbsp;</th></tr>";
 
 				}
 

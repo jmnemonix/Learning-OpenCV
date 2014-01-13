@@ -58,24 +58,41 @@ public class Ware extends HttpServlet{
 						String pid    = rs.getString("id");
 						String pname  = rs.getString("name");
 						String pwg    = rs.getString("warengruppe");
+						String pbild  = rs.getString("bild");
 						String pbest  = rs.getString("bestand");
 						String pbesch = rs.getString("beschreibung");
 						String ppreis = rs.getString("preis");
 
-						String zeile0 = "<form method='POST' action='http://praxi.mt.haw-hamburg.de/servlet/Ware'><table border='0'>";
-						String zeile1 = "<tr><th>Produkt Nr</th><th>"+pid+"<input type='hidden' name='pid' value="+pid+"></th></tr><tr><th>Warengruppe</th><th><input type='text' name='pname' value='"+pwg+"'></th></tr>";
+						String zeile0 = "<form method='POST' action='http://praxi.mt.haw-hamburg.de/servlet/Ware'><input type='hidden' name='f' value='pchange'><table border='0'>";
+						String zeile1 = "<tr><th>Produkt Nr</th><th>"+pid+"<input type='hidden' name='pid' value="+pid+"></th></tr><tr><th>Warengruppe</th><th><input type='text' name='wgruppe' value='"+pwg+"'></th></tr>";
 						String zeile2 = "<tr><th>Name</th><th><input type='text' name='pname' value='"+pname+"'></th></tr>";
-						String zeile3 = "<tr><th>Bestand</th><th><input type='text' name='bestand' value='"+pbest+"'></th></tr>";
-						String zeile4 = "<tr><th>Beschreibung</th><th><input type='text' name='beschreib' value='"+pbesch+"'></th></tr>";
-						String zeile5 = "<tr><th>Preis</th><th><input type='text' name='preis' value='"+ppreis+"'></th></tr>";
-						String zeile6 = "</table><input type='submit' value='&Auml;ndern' name='pUpd'><input type='submit' value='L&ouml;schen' name='pDel'></form>";
+						String zeile3 = "<tr><th><img src='"+pbild+"' alt='Bild'></th><th><input type='text' name='bild' value='"+pbild+"'></th></tr>";
+						String zeile4 = "<tr><th>Bestand</th><th><input type='text' name='bestand' value='"+pbest+"'></th></tr>";
+						String zeile5 = "<tr><th>Beschreibung</th><th><input type='text' name='beschreib' value='"+pbesch+"'></th></tr>";
+						String zeile6 = "<tr><th>Preis</th><th><input type='text' name='preis' value='"+ppreis+"'> &euro;</th></tr>";
+						String zeile7 = "</table><input type='submit' value='&Auml;ndern' name='pUpd'><input type='submit' value='L&ouml;schen' name='pDel'></form>";
 
-						out.println( zeile0+zeile1+zeile2+zeile3+zeile4+zeile5+zeile6);
+						out.println( zeile0+zeile1+zeile2+zeile3+zeile4+zeile5+zeile6+zeile7);
 
 					}
 
 					st.close();
 					con.close();
+
+				}
+				else if ((funktion.equals("newForm"))&&(userRolle.equals("1"))) { // -------------------------------------------------------------- der Admin erstellt ein neues Produkt
+
+
+					String zeile0 = "<form method='POST' action='http://praxi.mt.haw-hamburg.de/servlet/Ware'><input type='hidden' name='f' value='pnew'><table border='0'>";
+					String zeile1 = "<tr><th>Warengruppe</th><th><input type='text' name='wgruppe'></th></tr>";
+					String zeile2 = "<tr><th>Name</th><th><input type='text' name='pname'></th></tr>";
+					String zeile3 = "<tr><th>Bild</th><th><input type='text' name='bild'></th></tr>";
+					String zeile4 = "<tr><th>Bestand</th><th><input type='text' name='bestand'></th></tr>";
+					String zeile5 = "<tr><th>Beschreibung</th><th><input type='text' name='beschreib'></th></tr>";
+					String zeile6 = "<tr><th>Preis</th><th><input type='text' name='preis'> &euro;</th></tr>";
+					String zeile7 = "</table><input type='submit' value='Senden' name='senden'></form>";
+
+					out.println( zeile0+zeile1+zeile2+zeile3+zeile4+zeile5+zeile6+zeile7);
 
 				}
 				else if ((funktion.equals("delete"))&&(userRolle.equals("1"))) { // ----------------------------------------------------------------- Produkt Loeschen
@@ -105,6 +122,7 @@ public class Ware extends HttpServlet{
 					}
 					//out.println("<tr><th>&nbsp;</th><th>"+pwg+"</th><th>"+pname+"</th><th>"+pbest+"</th><th>"+ppreis+" &euro;</th><th><a href='index.jsp?p=admin&adm=6&pid="+pid+"'>Bearbeiten</a></th></tr>");
 					out.println("</table>");
+					out.println("<a href='index.jsp?p=admin&adm=7'>Neues Produkt Hinzuf&uuml;gen</a>");
 
 					st.close();
 					con.close();

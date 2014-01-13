@@ -145,10 +145,6 @@ ToDo
 
 - Diese Datei in eine Vernünftige Form bringen
 
-- Einpacken.java bearbeiten
-- Warenkorb.java bearbeiten
-
-
 
 - benutzer können ihre daten einsehen und editieren
 	A) eine Seite in index.jsp hinzufügen (erledigt)
@@ -176,6 +172,8 @@ Nummer 			Bedeutung
 1				Test Fehler
 100				Zugangsdaten nicht richtig
 101				EMail schon im System
+
+120				Falsche Nutzerdaten
 
 404				Seite nicht gefunden
 
