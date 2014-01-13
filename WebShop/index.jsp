@@ -109,7 +109,7 @@
 	}
 	else if(myPage.equals("err")){
 		h1Title = "Fehler!";
-		easyContend = true;
+		easyContend = false;
 	}
 	else if(myPage.equals("prem")){
 		h1Title = "Presentation Mode";
@@ -158,9 +158,17 @@ else{
 	if(myPage.equals("katalog")){ /* ---------------------------------------------------------------------------------- Katalog */
 			String path = "/servlet/Katalog?wg="+wGruppe;
 	%> 
-		ggggggggggg
 		<jsp:include page="<%=path%>"/>
 
+	<%
+	}
+	else if(myPage.equals("err")){ /* ------------------------------------------------------------------------------- Fehler */
+
+		String fehlerseite = request.getParameter("err");
+
+		String path = "/servlet/Fehler?e="+fehlerseite;
+	%> 
+		<jsp:include page="<%=path%>"/>
 	<%
 	}
 	else if(myPage.equals("wagen")){ /* ------------------------------------------------------------------------------- Warenkorb */
@@ -219,7 +227,8 @@ else{
 			else if (myAdmin.equals("4"))	path = "/servlet/Bestellungen?f=list";
 			else if (myAdmin.equals("5"))	path = "/servlet/Benutzer?f=admchange&usr="+adUID;
 			else if (myAdmin.equals("6"))	path = "/servlet/Ware?f=admchange&pr="+adPID;
-			else if (myAdmin.equals("7"))	path = "/servlet/AdminWarenkorb";
+			else if (myAdmin.equals("7"))	path = "/servlet/Ware?f=newForm";
+			else if (myAdmin.equals("8"))	path = "/servlet/AdminWarenkorb";
 			else 							path = "/servlet/AdminOverview";
 	%> 
 		<div id="AdminBox">
@@ -228,7 +237,7 @@ else{
 				<li><a href="index.jsp?p=admin&adm=2">Benutzer</a></li>
 				<li><a href="index.jsp?p=admin&adm=3">Ware</a></li>
 				<li><a href="index.jsp?p=admin&adm=4">Bestellungen</a></li>
-				<li><a href="index.jsp?p=admin&adm=7">Warenk&ouml;rbe</a></li>
+				<li><a href="index.jsp?p=admin&adm=8">Warenk&ouml;rbe</a></li>
 			</ul>
 			<jsp:include page="<%=path%>"/>
 		</div>
