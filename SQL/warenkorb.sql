@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `warenkorb` (
   PRIMARY KEY (`kundeID`,`wareID`),
   FOREIGN KEY(wareID) REFERENCES ware(id) ON DELETE CASCADE,
   FOREIGN KEY(kundeID) REFERENCES benutzer(id) ON DELETE CASCADE
-);
+)ENGINE=INNODB;
 
 # beim naechsten eintrag in DB ggf weglassen
 
