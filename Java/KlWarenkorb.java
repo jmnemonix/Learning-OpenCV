@@ -11,6 +11,8 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import java.text.DecimalFormat;
+
 public class KlWarenkorb extends HttpServlet{
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
@@ -70,7 +72,7 @@ public class KlWarenkorb extends HttpServlet{
 
 				}
 				if(position <= 0) out.println("Du hast nichts im Warenkorb");
-				else			 out.println("<a href='index.jsp?p=wagen'>Du hast "+position+" Produkte ("+summeWare+" insg.) f&uuml;r "+summe+" &euro; im Warenkorb</a>");
+				else			 out.println("<a href='index.jsp?p=wagen'>Du hast "+position+" Produkte ("+summeWare+" insg.) f&uuml;r "+format(summe)+" &euro; im Warenkorb</a>");
 				
 				st1.close();
 				con.close();
@@ -82,5 +84,10 @@ public class KlWarenkorb extends HttpServlet{
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		doPost(req,res);
+	}
+	public static String format(double i){
+		DecimalFormat f = new DecimalFormat("#0.00");
+		double toFormat = ((double)Math.round(i*100))/100;
+		return f.format(toFormat);
 	}
 }

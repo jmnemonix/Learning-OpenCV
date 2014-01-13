@@ -11,6 +11,8 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import java.text.DecimalFormat;
+
 public class Warenkorb extends HttpServlet{
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
@@ -83,15 +85,15 @@ public class Warenkorb extends HttpServlet{
 					}
 					st2.close();
 
-					ausgabe = ausgabe+"\n<tr><th><form method='POST' action='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Warenkorb'><input type='hidden' name='f' value='aendern'>"+position+"</th><th>"+bezeichnung+"</th><th><input type='hidden' name='id' value='"+wareID+"'><input type='text' name='anzahl' value='"+anzahl+"'></th><th>"+preis+" &euro;</th><th>"+(anzahl*preis)+" &euro;</th><th><input type='submit' value='Aendern' name='aendern' disabled><input type='submit' value='Loeschen' name='loeschen' disabled></form></th></tr>";
+					ausgabe = ausgabe+"\n<tr><th><form method='POST' action='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Warenkorb'><input type='hidden' name='f' value='aendern'>"+position+"</th><th>"+bezeichnung+"</th><th><input type='hidden' name='id' value='"+wareID+"'><input type='text' name='anzahl' value='"+anzahl+"'></th><th>"+preis+" &euro;</th><th>"+(format(((double)anzahl)*preis))+" &euro;</th><th><input type='submit' value='Aendern' name='aendern' disabled><input type='submit' value='Loeschen' name='loeschen' disabled></form></th></tr>";
 
 					summeWare = summeWare+anzahl;
-					summe = summe+(anzahl*preis);
+					summe = summe+((double)anzahl*preis);
 				}
 
 
 				ausgabe = ausgabe+"\n<tr><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
-				ausgabe = ausgabe+"\n<tr><th>Summe</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>"+summe+" &euro;</th><th>&nbsp;</th></tr>";
+				ausgabe = ausgabe+"\n<tr><th>Summe</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>"+format(summe)+" &euro;</th><th>&nbsp;</th></tr>";
 
 				ausgabe = ausgabe+"\n</table>";
 				ausgabe = ausgabe+"\n<form method='GET' action='http://praxi.mt.haw-hamburg.de/~dw54/servlet/Bestellen'>Adresse: <input type='text' name='adresse'>\n<input type='submit' value='Bestellen' name='bestellen'><input type='submit' value='Leeren' name='leeren'></table>";
@@ -109,5 +111,10 @@ public class Warenkorb extends HttpServlet{
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		doPost(req,res);
+	}
+	public static String format(double i){
+		DecimalFormat f = new DecimalFormat("#0.00");
+		double toFormat = ((double)Math.round(i*100))/100;
+		return f.format(toFormat);
 	}
 }

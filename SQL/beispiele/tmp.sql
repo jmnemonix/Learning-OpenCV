@@ -18,6 +18,9 @@ SELECT `bestellungen`.`id`, `bestellungen`.`kundeID`, `bestellungen`.`adresse`, 
 		WHERE `bestellungen`.`kundeID` = '1' AND `bestWare`.`bestellungID` = `bestellungen`.`id` AND `bestWare`.`wareID` = `ware`.`ID`
 			ORDER BY `bestellungen`.`id`, `bestWare`.`position`;
 
+SELECT warenkorb.kundeID, warenkorb.wareID, warenkorb.anzahl, ware.name FROM warenkorb, ware WHERE warenkorb.wareID = ware.id ORDER BY warenkorb.kundeID;
+SELECT `warenkorb`.`kundeID`, `warenkorb`.`wareID`, `warenkorb`.`anzahl`, `ware`.`name` FROM `benutzer`, `warenkorb`, `ware` WHERE `warenkorb`.`kundeID`=`benutzer`.`id` AND `warenkorb`.`wareID` = `ware`.`id` ORDER BY `warenkorb`.`kundeID`
+
 >>>>>>>
 1 	rdbstr. 12 202020 Hamburg 	3 	1 	5 	200.02 	2 TB Oranen USB-Stick
 1 	rdbstr. 12 202020 Hamburg 	3 	2 	2 	14.39 	Messer
