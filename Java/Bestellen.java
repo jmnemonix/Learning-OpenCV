@@ -91,7 +91,7 @@ public class Bestellen extends HttpServlet{
 					out.println(ausgabe);
 				}
 				else if(myLeeren == "leeren"){
-					int k = st1.executeUpdate("DELETE * FROM `warenkorb` WHERE `warenkorb`.`kundeID` = "+userID);
+					int k = st1.executeUpdate("DELETE FROM `warenkorb` WHERE `warenkorb`.`kundeID` = "+userID);
 
 				}
 				st1.close();

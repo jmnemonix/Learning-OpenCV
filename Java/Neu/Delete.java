@@ -15,17 +15,27 @@ public class Delete extends HttpServlet{
 		PrintWriter out = res.getWriter();
 		HttpSession session = req.getSession();
 
-		String funktion  = req.getParameter("f");
+		String was       = req.getParameter("was"); // Was soll geloescht werden
 		String userRolle = (String) session.getAttribute("urolle");
 		String logCheck  = (String) session.getAttribute("iEingeloggt");
 
-		//DB-Treiber einbinden
-		try { Class.forName("org.gjt.mm.mysql.Driver"); }
-		catch (ClassNotFoundException e) { out.println("DB-Treiber nicht da!"); }
+		if(userRolle.equals("1")){ // prueffen ob admin
+			//DB-Treiber einbinden
+			try { Class.forName("org.gjt.mm.mysql.Driver"); }
+			catch (ClassNotFoundException e) { out.println("DB-Treiber nicht da!"); }
 
-		try
-		{
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
-			Statement st = con.createStatement();
+			try
+			{
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
+				Statement st = con.createStatement();
 
-			if(logCheck.equals("true")){
+
+			}
+			catch (Exception e)
+			{
+				out.println(" MySQL Exception: " + e.getMessage());
+			}
+		}
+		else out.println("Keine Berechtigung");
+	}
+}
