@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `ware` (
 # `preis` double NOT NULL,
   `preis` decimal(6,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=INNODB DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 
 INSERT INTO `ware` (`id`, `name`, `bild`,`beschreibung`, `warengruppe`, `bestand`, `preis`) VALUES
@@ -59,6 +59,14 @@ CREATE TABLE IF NOT EXISTS `bestellungen` (
   FOREIGN KEY(kundeID) REFERENCES benutzer(id) ON DELETE CASCADE
 )ENGINE=INNODB;
 
+# auch hier ggf nicht mitnehmen:
+
+INSERT INTO `bestellungen` (`id`, `kundeID`, `adresse`, `bemerkung`, `status`) VALUES
+(1, 1, 'rdbstr. 12 202020 Hamburg', '', 3),
+(2, 1000, 'rdbstr. 12 202020 Hamburg', 'bem', 2),
+(3, 1000, 'rdbstr. 12 202020 Hamburg', 'bem', 1),
+(5, 1, 'neue straße 1 555 city', 'der kunde will das blaue messer', 1);
+
 CREATE TABLE IF NOT EXISTS `bestWare` (
   `bestellungID` int(5) NOT NULL,
   `position` int(5) NOT NULL,
@@ -68,6 +76,17 @@ CREATE TABLE IF NOT EXISTS `bestWare` (
   FOREIGN KEY(wareID) REFERENCES ware(id),
   PRIMARY KEY (`bestellungID`,`position`)
 )ENGINE=INNODB;
+
+# bei naechstem einspielen in DB ggf. nicht mitnehmen
+
+INSERT INTO `bestWare` (`bestellungID`, `position`, `wareID`, `anzahl`) VALUES
+(1, 1, 2, 5),
+(1, 2, 5, 2),
+(2, 1, 3, 1),
+(3, 1, 11, 5),
+(5, 1, 6, 2),
+(5, 2, 7, 3),
+(5, 3, 8, 3);
 
 CREATE TABLE IF NOT EXISTS `warenkorb` (
   `kundeID` int(5) NOT NULL,
