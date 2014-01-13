@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `benutzer` (
   `bemerkung` varchar(120) DEFAULT NULL,
   `rolle` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10002 ;
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10002 ;
 
 
 INSERT INTO `benutzer` (`id`, `name`, `email`, `passwort`, `bemerkung`, `rolle`) VALUES
