@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `bestellungen` (
   `status` int(2) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY(kundeID) REFERENCES benutzer(id) ON DELETE CASCADE
-);
+)ENGINE=INNODB;
 
 # auch hier ggf nicht mitnehmen:
 
