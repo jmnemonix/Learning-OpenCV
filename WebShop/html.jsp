@@ -90,7 +90,7 @@ else if(part.equals("kopf")){ // -----------------------------------------------
 %>
 		<div id="logbox">
 			<form method='POST' action='<%=serverURL%>/servlet/Login'>
-				<input type='email' name='email'><input type='password' name='pswd'><input id="absenden" type='submit' value='Login' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
+				<input id='email' type='email' name='email' placeholder='E-Mail adresse'><input type='password' name='pswd' placeholder='Passwort'><input id="absenden" type='submit' value='Login' name='absenden'> oder <a href='index.jsp?p=reg'>Registrieren</a> 
 			</form>
 		</div>
 		<div id="snavi">&nbsp;</div>
