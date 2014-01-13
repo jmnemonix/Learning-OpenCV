@@ -1,10 +1,8 @@
 /*
 
-	Kleiner Wahrenkorb
-
+			Dieses Servlet listet alle Einträge auf, die in der Datenbank-Tabelle warenkorb eingetragen sind und sortiert sie nach BenutzerID
 
 */
-
 import java.io.*;
 import java.sql.*;
 
