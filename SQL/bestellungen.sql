@@ -14,4 +14,4 @@ INSERT INTO `bestellungen` (`id`, `kundeID`, `adresse`, `bemerkung`, `status`) V
 (1, 1, 'rdbstr. 12 202020 Hamburg', '', 3),
 (2, 1000, 'rdbstr. 12 202020 Hamburg', 'bem', 2),
 (3, 1000, 'rdbstr. 12 202020 Hamburg', 'bem', 1),
-(4, 1, 'neue straße 1 555 city', 'der kunde will das blaue messer', 1);
+(5, 1, 'neue straße 1 555 city', 'der kunde will das blaue messer', 1);
