@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `ware` (
   `warengruppe` int(3) NOT NULL,
   `bestand` int(5) NOT NULL,
   `preis` double NOT NULL,
+#  `preis` decimal(6,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
