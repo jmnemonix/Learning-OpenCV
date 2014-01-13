@@ -1,13 +1,14 @@
 CREATE TABLE IF NOT EXISTS `bestellungen` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `kundeID` int(5) NOT NULL REFERENCES benutzer(id),
+  `kundeID` int(5) NOT NULL,
   `adresse` varchar(50) NOT NULL,
   `bemerkung` varchar(140) NOT NULL,
   `status` int(2) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(kundeID) REFERENCES benutzer(id) ON DELETE CASCADE
 );
 
-# auch hier ggf nicht mitnehmen
+# auch hier ggf nicht mitnehmen:
 
 INSERT INTO `bestellungen` (`id`, `kundeID`, `adresse`, `bemerkung`, `status`) VALUES
 (1, 1, 'rdbstr. 12 202020 Hamburg', '', 3),
