@@ -14,6 +14,7 @@ public class Bestellen extends HttpServlet{
 		HttpSession session = req.getSession();
 	
 		res.setContentType("text/html");
+
 		PrintWriter out = res.getWriter();
 		String userID    = (String) session.getAttribute("uid");
 
@@ -26,6 +27,8 @@ public class Bestellen extends HttpServlet{
 
 		boolean gibAus = false;
 
+		//out.println(""+myLeeren+"  <br>"+ myBestellen+"<br>"+myAdresse);
+
 
 		try{ Class.forName("org.gjt.mm.mysql.Driver"); }
 		catch (ClassNotFoundException e){ out.println("DB-Treiber nicht da!"); }
@@ -34,16 +37,7 @@ public class Bestellen extends HttpServlet{
 			Da er sich dann nicht mehr registrieren darf */
 		String logCheck = "";
 		logCheck = (String) session.getAttribute("iEingeloggt");
-/*
-		if((funktion.equals("aendern"))&&(logCheck.equals("true"))) {
-			String wareID   = req.getParameter("id");
-			String anzahl   = req.getParameter("anzahl");
-			String aendern  = req.getParameter("aendern");
-			String loeschen = req.getParameter("loeschen");
 
-			out.println("eingabe: "+wareID+" - "+anzahl+" - "+aendern+" - "+loeschen);
-
-		}*/
 		
 		if(logCheck.equals("true")) {
 			try{
@@ -125,7 +119,7 @@ public class Bestellen extends HttpServlet{
 					int k = st7.executeUpdate("UPDATE `bestellungen` SET `status` = '2' WHERE `kundeID` = "+userID+" AND `status` = '1'");
 
 					// nun wird der Waarenkorb geleert
-					k = st7.executeUpdate("DELETE FROM `warenkorb` WHERE `warenkorb`.`kundeID` = "+userID);
+					k = st7.executeUpdate("DELETE FROM `warenkorb` WHERE `warenkorb`.`kundeID` = '"+userID+"'");
 
 					if(gibAus) out.println("<br><br>Warenkorb leer");
 					else res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/" );
@@ -134,13 +128,20 @@ public class Bestellen extends HttpServlet{
 					st7.close();
 					st2.close();
 				}
-				else if(myLeeren == "leeren"){
-					int k = st1.executeUpdate("DELETE FROM `warenkorb` WHERE `warenkorb`.`kundeID` = "+userID);
+				else if(myLeeren.equals("Leeren")) {
+					Statement st9 = con.createStatement();
+					int doi = 0;
+					doi = st9.executeUpdate("DELETE FROM `dw54`.`warenkorb` WHERE `warenkorb`.`kundeID` ='"+userID+"'");
+
 
 					if(gibAus){
-						if(k > 0) out.println("leer "+k);
-						else out.println("nein nicht leer "+k);
+						if(doi > 0) out.println("leer "+doi);
+						else out.println("nein nicht leer "+doi);
 					}
+
+					st9.close();
+
+
 					if(!gibAus) res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/" );
 				}
 
@@ -152,6 +153,7 @@ public class Bestellen extends HttpServlet{
 			catch (Exception e){
 				out.println(" MySQL Exception: " + e.getMessage());
 			}
+			out.println("nach exception userID: "+userID);
 		}
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
