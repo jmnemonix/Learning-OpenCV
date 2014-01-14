@@ -1,10 +1,3 @@
-/*
-
-	Kleiner Wahrenkorb
-
-
-*/
-
 import java.io.*;
 import java.sql.*;
 
@@ -26,7 +19,7 @@ public class Bestellungen extends HttpServlet{
 		String userRolle = (String) session.getAttribute("urolle");
 
 		String funktion     = req.getParameter("f");
-		String bestellungID = req.getParameter("bid");
+		String bestellungID = req.getParameter("id");
 
 		try{ Class.forName("org.gjt.mm.mysql.Driver"); }
 		catch (ClassNotFoundException e){ out.println("DB-Treiber nicht da!"); }
@@ -35,6 +28,11 @@ public class Bestellungen extends HttpServlet{
 			Da er sich dann nicht mehr registrieren darf */
 		String logCheck = "";
 		logCheck = (String) session.getAttribute("iEingeloggt");
+
+		boolean admin = false;
+		if(userRolle.equals("1")) admin = true;
+
+
 		if(logCheck.equals("true")) {
 			try{
 				
@@ -45,42 +43,42 @@ public class Bestellungen extends HttpServlet{
 				// Suche einen Warenkorb raus (Status = 0)
 
 				ResultSet rs1;
-
-				boolean admin = false;
-				if((userRolle.equals("1"))&&(funktion.equals("list"))){
-					admin = true;
-					rs1 = st1.executeQuery("SELECT * FROM bestellungen");
-				}
-				else if((userRolle.equals("1"))&&(funktion.equals("versenden"))){
-					admin = true;
-					rs1 = st1.executeQuery("SELECT * FROM `bestellungen` WHERE `id` LIKE '"+bestellungID+"'");
-				}
-				else rs1 = st1.executeQuery("SELECT * FROM `bestellungen` WHERE `kundeID` LIKE '"+userID+"' AND `status` NOT LIKE '0'");
-
-
-
+				
 				boolean keinEintrag = true;
-				int     anzahlWare  = 0;
-				int     summeWare   = 0;
-				double  summe       = 0.0;
+				int anzahlWare = 0;
+				int summeWare = 0;
+				double summe = 0.0;
+
 
 				String ausgabe = "";
 
 				if((admin)&&(funktion.equals("versenden"))){
-					Statement st2 = con.createStatement();
 
-					int i = st.executeUpdate("UPDATE `bestellungen` SET `status` = '3' WHERE `bestellungen`.`id` ="+bestellungID);
-					ausgabe = "Status: "+i;
-					
+					Statement st7 = con.createStatement();
+
+					// die bestellung wird abgeschlossen indem der status auf 2 geaendert wird
+					int k = st7.executeUpdate("UPDATE `bestellungen` SET `status` = '3' WHERE `id` = "+bestellungID);
+
+					st7.close();
+
+					res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p=admin&adm=4" );
 				}
-				if((admin)&&(funktion.equals("loeschen"))){ //////////////////////////////// TODO
+				else if((admin)&&(funktion.equals("loeschen"))){ 
 					Statement st2 = con.createStatement();
 
-					int i = st.executeUpdate("UPDATE `bestellungen` SET `status` = '3' WHERE `bestellungen`.`id` ="+bestellungID);
-					ausgabe = "Status: "+i;
+					int i = st2.executeUpdate("DELETE FROM `bestellungen` WHERE `id` ="+bestellungID);
+					ausgabe = "(Loeschen) Status: "+i;
+					
+					st2.close();
+					res.sendRedirect( "http://praxi.mt.haw-hamburg.de/~dw54/index.jsp?p=admin&adm=4" );
 					
 				}
 				else{
+					if((admin)&&(funktion.equals("list"))) {
+						rs1 = st1.executeQuery("SELECT * FROM bestellungen");
+					}
+					else rs1 = st1.executeQuery("SELECT * FROM `bestellungen` WHERE `kundeID` LIKE '"+userID+"'");
+
 					while(rs1.next()){
 
 						String bestID = rs1.getString("id");
