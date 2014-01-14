@@ -26,3 +26,5 @@ SELECT `warenkorb`.`kundeID`, `warenkorb`.`wareID`, `warenkorb`.`anzahl`, `ware`
 1 	rdbstr. 12 202020 Hamburg 	3 	2 	2 	14.39 	Messer
 
 Super Cool
+
+DELETE FROM `dw54`.`warenkorb` WHERE `warenkorb`.`kundeID` = 10000 AND `warenkorb`.`wareID` = 12;
