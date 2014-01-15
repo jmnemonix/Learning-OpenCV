@@ -12,7 +12,6 @@
 			- Die Navigations Liste mit den Warengruppen
 			- Ende der Seite
 			- Registrierungsformular
-			- </div>
 
 
 	 */
@@ -60,13 +59,6 @@ if(part.equals("head")){ // ----------------------------------------------------
 <HEAD>
 	<TITLE><%=jspTitle%></TITLE>
 	<link rel="stylesheet" title="Std" href="<%=CStyleS%>">
-  	<link rel="stylesheet" title="Obsidian" href="highlight.js/styles/obsidian.css">
-	<script src="highlight.js/highlight.pack.js"></script>
-	<script>
-		//hljs.tabReplace = '    ';
-		hljs.initHighlightingOnLoad();
-	</script>
-
 </HEAD>
 <BODY>
 
