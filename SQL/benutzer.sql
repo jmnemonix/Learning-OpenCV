@@ -6,10 +6,8 @@ CREATE TABLE IF NOT EXISTS `benutzer` (
   `bemerkung` varchar(120) DEFAULT NULL,
   `rolle` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10002 ;
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10000 ;
 
 
 INSERT INTO `benutzer` (`id`, `name`, `email`, `passwort`, `bemerkung`, `rolle`) VALUES
-(1, 'admin', 'admin@shop', 'asdf', NULL, 1),
-(10000, 'Rene Descartes', 'kunde@shop', 'qwert', NULL, 10),
-(10001, 'Platon', 'kunde2@shop', 'qwert', NULL, 10);
+(1, 'admin', 'admin@shop', 'asdf', NULL, 1);

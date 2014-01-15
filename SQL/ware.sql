@@ -5,10 +5,9 @@ CREATE TABLE IF NOT EXISTS `ware` (
   `beschreibung` varchar(250) NOT NULL,
   `warengruppe` int(3) NOT NULL,
   `bestand` int(5) NOT NULL,
-#  `preis` double NOT NULL,
   `preis` decimal(6,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`)
-) ENGINE=INNODB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=INNODB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 
 INSERT INTO `ware` (`id`, `name`, `bild`,`beschreibung`, `warengruppe`, `bestand`, `preis`) VALUES

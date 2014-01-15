@@ -4,6 +4,8 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import java.text.DecimalFormat;
+
 public class Bestellungen extends HttpServlet{
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
@@ -110,6 +112,9 @@ public class Bestellungen extends HttpServlet{
 
 						ResultSet rs2 = st2.executeQuery("SELECT * FROM bestWare WHERE bestellungID LIKE '"+bestID+"'");
 
+						summe = 0;
+						summeWare = 0;
+
 						while(rs2.next()){
 
 							int anzahl    = rs2.getInt("anzahl");
@@ -130,14 +135,14 @@ public class Bestellungen extends HttpServlet{
 							st3.close();
 							String position = rs2.getString("position");
 
-							ausgabe = ausgabe+"\n<tr><th>"+position+"</th><th>"+bezeichnung+"</th><th>"+(bStatus == 0 ? "<input type='text' name='name' value='" :"")+anzahl+(bStatus == 0 ? "'>" :"")+"</th><th>"+preis+" &euro;</th><th>"+(anzahl*preis)+" &euro;</th><th>"+(bStatus == 0 ? "<input type='checkbox' name='"+bestID+"' value='"+position+"'>" : "&nbsp;")+"</th></tr>";
+							ausgabe = ausgabe+"\n<tr><th>"+position+"</th><th>"+bezeichnung+"</th><th>"+anzahl+"</th><th>"+format(preis)+" &euro;</th><th>"+format((anzahl*preis))+" &euro;</th><th>&nbsp;</th></tr>";
 
 							summe = summe+(anzahl*preis);
 							keinEintrag = false;
 						}
 						st2.close();
 						ausgabe = ausgabe+"\n<tr><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
-						ausgabe = ausgabe+"\n<tr><th>Summe</th><th>&nbsp;</th><th>"+summeWare+"</th><th>&nbsp;</th><th>"+summe+" &euro;</th><th>&nbsp;</th></tr>";
+						ausgabe = ausgabe+"\n<tr><th>Summe</th><th>&nbsp;</th><th>"+summeWare+"</th><th>&nbsp;</th><th>"+format(summe)+" &euro;</th><th>&nbsp;</th></tr>";
 
 						ausgabe = ausgabe+"</table>";
 
@@ -164,5 +169,10 @@ public class Bestellungen extends HttpServlet{
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		doPost(req,res);
+	}
+	public static String format(double i){
+		DecimalFormat f = new DecimalFormat("#0.00");
+		double toFormat = ((double)Math.round(i*100))/100;
+		return f.format(toFormat);
 	}
 }
