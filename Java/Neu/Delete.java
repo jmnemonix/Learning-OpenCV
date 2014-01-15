@@ -29,6 +29,8 @@ public class Delete extends HttpServlet{
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+sqlUsr, sqlUsr, sqlPswd);
 				Statement st = con.createStatement();
 
+				ResultSet rs = st.executeQuery("SELECT * FROM ware WHERE id LIKE '"+produktID+"'");
+
 
 			}
 			catch (Exception e)
