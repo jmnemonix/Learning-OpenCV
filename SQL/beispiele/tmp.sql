@@ -28,3 +28,5 @@ SELECT `warenkorb`.`kundeID`, `warenkorb`.`wareID`, `warenkorb`.`anzahl`, `ware`
 Super Cool
 
 DELETE FROM `dw54`.`warenkorb` WHERE `warenkorb`.`kundeID` = 10000 AND `warenkorb`.`wareID` = 12;
+
+UPDATE `dw54`.`ware` SET `bestand` = '5674' WHERE `ware`.`id` =1;
