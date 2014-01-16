@@ -102,66 +102,8 @@ Weil Praxi eine unglaubliche Zicke ist! Klassen zu benutzen ist unpraktisch ... 
 
 
 
-Aufgaben
-=======
-
-Wer 		Was							Erlegigt		Wo
-
-Alle 		Begrüssung					Ja				index.jsp
-Alle 		News Anzeigen 				Bonus
-Alle 		AGB, Impressum Anzeigen 	Ja 				index.jsp
-Alle 		Konakt aufnehmen			Bonus
-
-Alle 		Fehler angezeigt			Nein			index.jsp
-
-Benutzer	Einloggen					Ja 				Login.java
-Benutzer	Ausloggen					Ja 				Logout.java
-Benutzer	Daten Einsehen 				Ja				index.jsp & Benutzer.java
-Benutzer 	Daten ändern 				Nein			Benutzer.java
-
-Kunde		Kategorien Browsen			Ja 				index.jsp und Katalog.java
-Kunde		Registrieren				Ja
-Kunde		Ein Passwort generiert		Ja
-Kunde		Waren in Warenkorb			Ja
-Kunde		Warenkorb Anzeigen			Ja
-Kunde		Warenkorb Editieren 		Nein
-Kunde		Bestellen 					Nein
-
-Admin		Benutzer Anzeigen lassen	Ja
-Admin		Einen Nutzer bearbeiten		Jain
-Admin 		Waren auflisten				Ja
-Admin		Ware bearbeiten				Nein
-Admin		Ware löschen				Nein
-Admin		Bestellungen auflisten		Ja
-Admin		Bestellungen Versenden		Ja   ???
-Admin		Bestellung löschen			Nein
-Admin		Datenbank Zurücksetzen		Nein <<< das kommt wohl zum Schluss
-Admin		News Verwalten				Bonus
 
 
-
-ToDo
-=======
-
-- Diese Datei in eine Vernünftige Form bringen
-
-
-- benutzer können ihre daten einsehen und editieren
-	A) eine Seite in index.jsp hinzufügen (erledigt)
-	B) Benutzer.java diese funktion hinzufügen
-	C) in index.jsp einbinden
-
-- Benutzer Verwalten
-
-- Presentation mode hinzufügen
-
-- Module für Admin Bereich erstellen
-
-- struktur updaten
-
-
-
-- Überall Einkaufswagen in Warenkorb umbennenen
 
 
 Fehler
