@@ -12,7 +12,7 @@ void showVideo(){
 	// mit 0 laden wir die webcam
 	vcapture.open(0);
 	// trackbar
-	createTrackbar( "trackbar"Linear Blend", 0, 255);
+	createTrackbar( "trackbar","Linear Blend", 0, 255);
 	// neues fenster erstellen
 	namedWindow( "video", CV_WINDOW_AUTOSIZE );
 	// schleife fuer das durchlaufen des videos
