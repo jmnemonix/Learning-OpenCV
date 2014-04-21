@@ -7,7 +7,7 @@ void showImage(){
 	const string path = "kitten.jpg";
 	Mat image = imread(path, CV_LOAD_IMAGE_COLOR);
 	//			breite				  				hoehe
-	cout << image.size().width << " " << image.size().height << endl;
+	cout << "Size: " << image.size().width << " x " << image.size().height << endl;
 	namedWindow( "Display window", CV_WINDOW_AUTOSIZE );
 	imshow( "Display window", image ); 
 
