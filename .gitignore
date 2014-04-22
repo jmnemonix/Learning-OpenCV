@@ -1,0 +1,45 @@
+06uebung03/Micro.avi
+
+lampe/00helloworld/main
+
+lampe/01uebung01/main
+
+lampe/03opencv01/main
+#lampe/03opencv01/main.o
+
+lampe/04hausaufgabe01/mainb
+lampe/04hausaufgabe01/mainc
+lampe/04hausaufgabe01/maind
+lampe/04hausaufgabe01/maindre
+lampe/04hausaufgabe01/maine
+lampe/04hausaufgabe01/mainzwei
+
+lampe/06uebung03/main
+
+
+C++/quickstart/main
+C++/quickstart/video
+
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
