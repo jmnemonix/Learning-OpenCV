@@ -90,8 +90,10 @@ void detectAndDisplay( Mat frame )
 		for( size_t j = 0; j < eyes.size(); j++ )
 		{
 			Point center( faces[i].x + eyes[j].x + eyes[j].width*0.5, faces[i].y + eyes[j].y + eyes[j].height*0.5 );
-			int radius = cvRound( (eyes[j].width + eyes[j].height)*0.1 );
-			circle( frame, center, radius, Scalar( 140, 140, 255 ), 10, CV_AA, 0 );
+			int radius = cvRound( (eyes[j].width + eyes[j].height)*0.2 );
+			int radius2 = cvRound( (eyes[j].width + eyes[j].height)*0.05 );
+			circle( frame, center, radius, Scalar( 255, 255, 255 ), 40, CV_AA, 0 );
+			circle( frame, center, radius2, Scalar( 0, 0, 0 ), 10, CV_AA, 0 );
 		}
 	}
 //-- Show what you got
