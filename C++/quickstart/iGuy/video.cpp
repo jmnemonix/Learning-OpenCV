@@ -3,7 +3,7 @@
 // Include header files
 //#include "cv.h"
 //#include "highgui.h"
-#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/highgui/highgui.hpp>
 #include <opencv/cv.hpp>
 
 #include <stdio.h>
