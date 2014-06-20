@@ -1,0 +1,6 @@
+OpenCV Error: Assertion failed (radius >= 0 && thickness <= 255 && 0 <= shift && shift <= XY_SHIFT) in circle, file /build/buildd/opencv-2.4.2+dfsg/modules/core/src/drawing.cpp, line 1628
+terminate called after throwing an instance of 'cv::Exception'
+  what():  /build/buildd/opencv-2.4.2+dfsg/modules/core/src/drawing.cpp:1628: error: (-215) radius >= 0 && thickness <= 255 && 0 <= shift && shift <= XY_SHIFT in function circle
+
+Aborted (core dumped)
+
