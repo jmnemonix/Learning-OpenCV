@@ -76,10 +76,10 @@ void detectAndDisplay( Mat frame )
 		Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height*0.5 );
 		//ellipse( frame, center, Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, Scalar( 50, 255, 50 ), 4, 8, 0 );
 
-		ellipse( frame, center, Size( faces[i].width*0.8, faces[i].height*0.8), 0,0, 300, Scalar(  20, 100,  20),2,CV_AA,0);
-		ellipse( frame, center, Size( faces[i].width*0.7, faces[i].height*0.7), 0,0, 300, Scalar(  60, 150,  60),2,CV_AA,0);
-		ellipse( frame, center, Size( faces[i].width*0.6, faces[i].height*0.6), 0,0, 300, Scalar( 100, 200, 100),2,CV_AA,0);
-		ellipse( frame, center, Size( faces[i].width*0.5, faces[i].height*0.5), 0,0, 300, Scalar( 140, 255, 140),2,CV_AA,0);
+//		ellipse( frame, center, Size( faces[i].width*0.8, faces[i].height*0.8), 0,0, 300, Scalar(  20, 100,  20),2,CV_AA,0);
+//		ellipse( frame, center, Size( faces[i].width*0.7, faces[i].height*0.7), 0,0, 300, Scalar(  60, 150,  60),2,CV_AA,0);
+//		ellipse( frame, center, Size( faces[i].width*0.6, faces[i].height*0.6), 0,0, 300, Scalar( 100, 200, 100),2,CV_AA,0);
+//		ellipse( frame, center, Size( faces[i].width*0.5, faces[i].height*0.5), 0,0, 300, Scalar( 140, 255, 140),2,CV_AA,0);
 
 		Mat faceROI = frame_gray( faces[i] );
 		std::vector<Rect> eyes;
