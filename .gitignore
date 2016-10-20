@@ -1,26 +1,26 @@
-06uebung03/Micro.avi
-
-lampe/00helloworld/main
-
-lampe/01uebung01/main
-
-lampe/03opencv01/main
-#lampe/03opencv01/main.o
-
-lampe/04hausaufgabe01/mainb
-lampe/04hausaufgabe01/mainc
-lampe/04hausaufgabe01/maind
-lampe/04hausaufgabe01/maindre
-lampe/04hausaufgabe01/maine
-lampe/04hausaufgabe01/mainzwei
-
-lampe/06uebung03/main
 
 
-C++/quickstart/main
-C++/quickstart/video
+OpenCV/06uebung03/Micro.avi
+OpenCV/lampe/00helloworld/main
+OpenCV/lampe/01uebung01/main
 
-C++/TutTut/*
+OpenCV/lampe/03opencv01/main
+#OpenCV/lampe/03opencv01/main.o
+
+OpenCV/lampe/04hausaufgabe01/mainb
+OpenCV/lampe/04hausaufgabe01/mainc
+OpenCV/lampe/04hausaufgabe01/maind
+OpenCV/lampe/04hausaufgabe01/maindre
+OpenCV/lampe/04hausaufgabe01/maine
+OpenCV/lampe/04hausaufgabe01/mainzwei
+
+OpenCV/lampe/06uebung03/main
+
+
+OpenCV/C++/quickstart/main
+OpenCV/C++/quickstart/video
+
+OpenCV/C++/TutTut/*
 
 # Compiled Object files
 *.slo
@@ -49,3 +49,22 @@ C++/TutTut/*
 *.mp4
 *.avi
 *.mpeg
+
+#
+# ### JAVA ###
+#
+
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
