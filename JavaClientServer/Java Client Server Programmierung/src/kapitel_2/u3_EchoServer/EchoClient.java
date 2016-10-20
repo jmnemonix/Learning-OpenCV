@@ -3,10 +3,10 @@ package kapitel_2.u3_EchoServer;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketException;
 
-import general.values.MyBuffer;
+import general.values.DatagramSetup;
 import general.values.TimeOuts;
+import kapitel_1.u4_IP_Adressen_Sockets.Lookup;
 
 public class EchoClient {
 	/**
@@ -14,40 +14,47 @@ public class EchoClient {
 	 * Aufruf: java -cp bin EchoClient <hostname> <port> <Msg>
 	 * 
 	 */
-	
-//	private static final int BUFSIZE = 508;
-//	private static final int TIMEOUT = 2000;
+	private static final String NAME = "EchoClient";
 	
 	public static void main(String[] args) {
 		
-		String host = "localhost" ; //args[0];
-		int port = 50000; //Integer.parseInt(args[1]);
-		byte[] data = "Haaaaaaaaaaaalllooooooo".getBytes(); //args[2].getBytes();
+		String host = "localhost";
+		int    port = 50000;
+		byte[] data = "exit".getBytes();
+		
+		if (args.length == 3) {
+			host = args[0];
+			port = Integer.parseInt(args[1]);
+			data = args[2].getBytes();
+		}
 		
 		try ( DatagramSocket socket = new DatagramSocket() ) {
 			
 			socket.setSoTimeout(TimeOuts.T2K);
 			
-			InetAddress addr = InetAddress.getByName(host);
+			InetAddress addr = Lookup.lookup(host);
+			
 			DatagramPacket packetOut = new DatagramPacket(data, data.length, addr, port);
 			
 			socket.send(packetOut);
 			
-			DatagramPacket packetIn = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
+			DatagramPacket packetIn = DatagramSetup.newDatagramPacket();
 			
 			socket.receive(packetIn);
 			
-			String received = new String (packetIn.getData(), 0, packetIn.getLength());
+			String received = new String(packetIn.getData(), 0, packetIn.getLength());
 			
-			System.out.println("(EchoClient) Empfangen: " + received);
+			print("Empfangen: " + received);
 			
-		} catch (SocketException e) {
-			System.err.println(e);
 		} catch (Exception e ) {
-			System.err.println(e);
+			e.printStackTrace();
 		}
 		
-		System.out.println("(EchoClient) Exit");
+		print("Exit");
+	}
+	
+	private static void print(String s) {
+		System.out.println("("+NAME+") "+s);
 	}
 
 }

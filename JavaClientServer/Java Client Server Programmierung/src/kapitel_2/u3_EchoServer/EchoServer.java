@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-import general.values.MyBuffer;
+import general.values.DatagramSetup;
+import general.values.PortSetup;
 
 public class EchoServer {
 	/**
@@ -13,18 +14,18 @@ public class EchoServer {
 	 * 
 	 */
 	
-	
-//	private static final int BUFSIZE = 508;
-
 	public static void main(String[] args) {
-
 		
-		int port = ( args.length > 0 ? Integer.parseInt(args[0]) : 50000 );
+		int port = PortSetup.STD_PORT_3;
+		
+		if (args.length > 0) {
+			port = Integer.parseInt(args[0]);
+		}
 		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
-			DatagramPacket packetIn  = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
-			DatagramPacket packetOut = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
+			DatagramPacket packetIn  = DatagramSetup.newDatagramPacket();
+			DatagramPacket packetOut = DatagramSetup.newDatagramPacket();
 			
 			System.out.println("(EchoServer) Server gestartet ...");
 			
@@ -32,7 +33,7 @@ public class EchoServer {
 				
 				socket.receive(packetIn);
 				System.out.println("(EchoServer) Empfangen: " + packetIn.getLength() + " bytes");
-				String received = new String (packetIn.getData(), 0, packetIn.getLength());
+				String received = new String(packetIn.getData(), 0, packetIn.getLength());
 				System.out.println("(EchoServer) Data: " + received);
 				
 				packetOut.setData(packetIn.getData());

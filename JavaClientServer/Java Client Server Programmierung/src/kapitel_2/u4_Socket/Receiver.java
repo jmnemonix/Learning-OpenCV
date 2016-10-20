@@ -5,30 +5,30 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import general.values.MyBuffer;
+import general.values.DatagramSetup;
+import general.values.PortSetup;
 
 public class Receiver {
 	
-//	private static final int BUFSIZE = 508;
-
 	public static void main(String[] args) {
 		
-		if ( args.length < 3 ){
-			String[] nargs = { "50000", "localhost", "40000"};
-			args = nargs;
+		int    port       = PortSetup.STD_PORT_3;
+		String remoteHost = "localhost";
+		int    remotePort = PortSetup.STD_PORT_1;
+		
+		if ( args.length == 3 ){
+			port       = Integer.parseInt( args[0] );
+			remoteHost = args[1];
+			remotePort = Integer.parseInt( args[2] );
 		}
-		
-		int port = Integer.parseInt( args[0] );
-		String remoteHost = args[1];
-		int remotePort = Integer.parseInt( args[2] );
-		
+	
 		System.out.println("(Receiver) starting ... "); 
 		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
 			socket.connect(InetAddress.getByName(remoteHost), remotePort);
 			
-			DatagramPacket packet = new  DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
+			DatagramPacket packet = new  DatagramPacket(new byte[DatagramSetup.BUFFER_SIZE], DatagramSetup.BUFFER_SIZE);
 			
 			while (true) {
 				
