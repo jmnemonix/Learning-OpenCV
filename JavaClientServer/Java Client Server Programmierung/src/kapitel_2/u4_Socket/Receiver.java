@@ -7,11 +7,16 @@ import java.net.InetAddress;
 
 import general.values.MyBuffer;
 
-public class Sender {
+public class Receiver {
 	
 //	private static final int BUFSIZE = 508;
 
 	public static void main(String[] args) {
+		
+		if ( args.length < 3 ){
+			String[] nargs = { "50000", "localhost", "40000"};
+			args = nargs;
+		}
 		
 		int port = Integer.parseInt( args[0] );
 		String remoteHost = args[1];
