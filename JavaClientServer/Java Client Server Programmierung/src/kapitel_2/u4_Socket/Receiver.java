@@ -22,6 +22,8 @@ public class Receiver {
 		String remoteHost = args[1];
 		int remotePort = Integer.parseInt( args[2] );
 		
+		System.out.println("(Receiver) starting ... "); 
+		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
 			socket.connect(InetAddress.getByName(remoteHost), remotePort);
@@ -33,7 +35,7 @@ public class Receiver {
 				socket.receive(packet);
 				String text = new String(packet.getData(), 0, packet.getLength() );
 				
-				System.out.println(packet.getAddress().getHostAddress() + ":" + packet.getPort() + " > " + text);
+				System.out.println("(Receiver) " + packet.getAddress().getHostAddress() + ":" + packet.getPort() + " > " + text);
 				
 			}
 			
