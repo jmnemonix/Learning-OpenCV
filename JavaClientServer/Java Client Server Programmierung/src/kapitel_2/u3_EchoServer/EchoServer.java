@@ -19,19 +19,21 @@ public class EchoServer {
 	public static void main(String[] args) {
 
 		
-		int port = Integer.parseInt(args[0]);
+		int port = ( args.length > 0 ? Integer.parseInt(args[0]) : 50000 );
 		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
 			DatagramPacket packetIn  = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
 			DatagramPacket packetOut = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
 			
-			System.out.println(" Server gestartet ...");
+			System.out.println("(EchoServer) Server gestartet ...");
 			
 			while (true) {
 				
 				socket.receive(packetIn);
-				System.out.println("Empfangen: " + packetIn.getLength() + " bytes");
+				System.out.println("(EchoServer) Empfangen: " + packetIn.getLength() + " bytes");
+				String received = new String (packetIn.getData(), 0, packetIn.getLength());
+				System.out.println("(EchoServer) Data: " + received);
 				
 				packetOut.setData(packetIn.getData());
 				packetOut.setLength(packetIn.getLength());

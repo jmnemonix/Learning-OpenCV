@@ -20,9 +20,9 @@ public class EchoClient {
 	
 	public static void main(String[] args) {
 		
-		String host = args[0];
-		int port = Integer.parseInt(args[1]);
-		byte[] data = args[2].getBytes();
+		String host = "localhost" ; //args[0];
+		int port = 50000; //Integer.parseInt(args[1]);
+		byte[] data = "Haaaaaaaaaaaalllooooooo".getBytes(); //args[2].getBytes();
 		
 		try ( DatagramSocket socket = new DatagramSocket() ) {
 			
@@ -39,13 +39,15 @@ public class EchoClient {
 			
 			String received = new String (packetIn.getData(), 0, packetIn.getLength());
 			
-			System.out.println("Received: " + received);
+			System.out.println("(EchoClient) Empfangen: " + received);
 			
 		} catch (SocketException e) {
 			System.err.println(e);
 		} catch (Exception e ) {
 			System.err.println(e);
 		}
+		
+		System.out.println("(EchoClient) Exit");
 	}
 
 }
