@@ -5,6 +5,9 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 
+import general.values.MyBuffer;
+import general.values.TimeOuts;
+
 public class EchoClient {
 	/**
 	 * 
@@ -12,8 +15,8 @@ public class EchoClient {
 	 * 
 	 */
 	
-	private static final int BUFSIZE = 508;
-	private static final int TIMEOUT = 2000;
+//	private static final int BUFSIZE = 508;
+//	private static final int TIMEOUT = 2000;
 	
 	public static void main(String[] args) {
 		
@@ -23,14 +26,14 @@ public class EchoClient {
 		
 		try ( DatagramSocket socket = new DatagramSocket() ) {
 			
-			socket.setSoTimeout(TIMEOUT);
+			socket.setSoTimeout(TimeOuts.T2K);
 			
 			InetAddress addr = InetAddress.getByName(host);
 			DatagramPacket packetOut = new DatagramPacket(data, data.length, addr, port);
 			
 			socket.send(packetOut);
 			
-			DatagramPacket packetIn = new DatagramPacket(new byte[BUFSIZE], BUFSIZE);
+			DatagramPacket packetIn = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
 			
 			socket.receive(packetIn);
 			

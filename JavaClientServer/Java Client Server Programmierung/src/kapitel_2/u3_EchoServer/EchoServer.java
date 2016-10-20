@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
+import general.values.MyBuffer;
+
 public class EchoServer {
 	/**
 	 * 
@@ -12,7 +14,7 @@ public class EchoServer {
 	 */
 	
 	
-	private static final int BUFSIZE = 508;
+//	private static final int BUFSIZE = 508;
 
 	public static void main(String[] args) {
 
@@ -21,8 +23,8 @@ public class EchoServer {
 		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
-			DatagramPacket packetIn  = new DatagramPacket(new byte[BUFSIZE], BUFSIZE);
-			DatagramPacket packetOut = new DatagramPacket(new byte[BUFSIZE], BUFSIZE);
+			DatagramPacket packetIn  = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
+			DatagramPacket packetOut = new DatagramPacket(new byte[MyBuffer.SIZE], MyBuffer.SIZE);
 			
 			System.out.println(" Server gestartet ...");
 			
