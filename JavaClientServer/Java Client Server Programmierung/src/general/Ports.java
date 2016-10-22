@@ -1,6 +1,6 @@
-package general.values;
+package general;
 
-public class PortSetup {
+public class Ports {
 
 	public static final int STD_PORT_1 = 40000;
 	public static final int STD_PORT_2 = 40001;

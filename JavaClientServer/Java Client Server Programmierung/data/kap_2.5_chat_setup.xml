@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<setupData>
+    <myName>TestUser_1</myName>
+    <myPort>40000</myPort>
+    <remoteHost>localhost</remoteHost>
+    <remotePort>50000</remotePort>
+</setupData>

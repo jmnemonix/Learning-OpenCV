@@ -1,8 +1,8 @@
-package general.values;
+package general;
 
 import java.net.DatagramPacket;
 
-public class DatagramSetup {
+public class Datagrams {
 	
 	public static final int BUFFER_SIZE = 508;
 	

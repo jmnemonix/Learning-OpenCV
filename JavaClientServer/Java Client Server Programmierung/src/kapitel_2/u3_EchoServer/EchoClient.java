@@ -4,8 +4,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import general.values.DatagramSetup;
-import general.values.TimeOuts;
+import general.Datagrams;
+import general.TimeOuts;
 import kapitel_1.u4_IP_Adressen_Sockets.Lookup;
 
 public class EchoClient {
@@ -38,7 +38,7 @@ public class EchoClient {
 			
 			socket.send(packetOut);
 			
-			DatagramPacket packetIn = DatagramSetup.newDatagramPacket();
+			DatagramPacket packetIn = Datagrams.newDatagramPacket();
 			
 			socket.receive(packetIn);
 			

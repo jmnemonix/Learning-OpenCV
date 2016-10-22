@@ -4,17 +4,17 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import general.tools.Random;
-import general.values.DatagramSetup;
-import general.values.PortSetup;
+import general.Datagrams;
+import general.Ports;
+import general.Random;
 
 public class Sender {
 
 	public static void main(String[] args) throws Exception {
 		
-		int    localPort = PortSetup.STD_PORT_1;
+		int    localPort = Ports.STD_PORT_1;
 		String host      = "localhost";
-		int    port      = PortSetup.STD_PORT_3;
+		int    port      = Ports.STD_PORT_3;
 		String msg       = "Hallo World! Random: " + Random.fromRage(0,99);
 		
 		if ( args.length == 4 ){
@@ -31,7 +31,7 @@ public class Sender {
 			System.out.println("(Sender) sending: '" + msg + "' to: " + host + ":" + port );
 			
 			InetAddress addr = InetAddress.getByName(host);
-			DatagramPacket packet = new DatagramPacket(new byte[DatagramSetup.BUFFER_SIZE], DatagramSetup.BUFFER_SIZE, addr, port);
+			DatagramPacket packet = new DatagramPacket(new byte[Datagrams.BUFFER_SIZE], Datagrams.BUFFER_SIZE, addr, port);
 			byte[] data = msg.getBytes();
 			packet.setData(data);
 			packet.setLength(data.length);

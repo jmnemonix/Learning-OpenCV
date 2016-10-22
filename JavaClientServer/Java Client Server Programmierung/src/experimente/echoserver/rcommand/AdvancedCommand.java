@@ -1,4 +1,4 @@
-package experimente.echoserver.rcommand.infrastructure;
+package experimente.echoserver.rcommand;
 
 public class AdvancedCommand {
 	

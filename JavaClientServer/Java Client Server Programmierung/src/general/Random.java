@@ -1,4 +1,4 @@
-package general.tools;
+package general;
 
 public class Random {
 

@@ -8,10 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,10 +22,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.xml.bind.JAXB;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
-import general.values.DatagramSetup;
-import general.values.PortSetup;
+import general.Datagrams;
+import general.Ports;
 import kapitel_1.u4_IP_Adressen_Sockets.Lookup;
+import kapitel_2.u5_chat.xmlconfig.SetupData;
 
 public class Talk implements ActionListener, Runnable {
 	
@@ -30,9 +37,9 @@ public class Talk implements ActionListener, Runnable {
 	
 	// --- Networking ---
 	private String user;
-	private int    localPort  = PortSetup.STD_PORT_3;
+	private int    localPort  = Ports.STD_PORT_3;
 	private String remoteHost;
-	private int    remotePort = PortSetup.STD_PORT_3;
+	private int    remotePort = Ports.STD_PORT_3;
 	
 	private DatagramSocket socket;
 	private DatagramPacket packetOut;
@@ -55,12 +62,25 @@ public class Talk implements ActionListener, Runnable {
 		frame.setVisible(true);
 	}
 	
-	public Talk(String[] args, JFrame frame) throws Exception {
+	public Talk(String[] args, JFrame frame) throws SocketException, UnknownHostException { //throws Exception {
+
 		setParameters(args);
 		
-		if ( user == null   || remoteHost == null ||
-			 localPort == 0 || remotePort == 0 ) {
-			throw new RuntimeException("Parameter Fehlen!");
+		if ( 	user == null   || remoteHost == null ||
+				localPort == 0 || remotePort == 0 ) {
+//			throw new RuntimeException("Parameter Fehlen!");
+			
+			try {
+				File file = new File( "data/kap_2.5_chat_setup.xml" );				
+				SetupData sdata = JAXB.unmarshal( file, SetupData.class );
+				
+				user       = sdata.getMyName();
+				localPort  = sdata.getMyPort();
+				remoteHost = sdata.getRemoteHost();
+				remotePort = sdata.getRemotePort();
+			} catch (Exception e) {
+				throw new RuntimeException("Parameter Fehlen!");
+			}
 		}
 		
 		InetAddress remoteAddress = Lookup.lookup(remoteHost);
@@ -70,7 +90,7 @@ public class Talk implements ActionListener, Runnable {
 		socket = new DatagramSocket(localPort);
 		
 		packetOut = new DatagramPacket(
-				new byte[DatagramSetup.BUFFER_SIZE], DatagramSetup.BUFFER_SIZE,
+				new byte[Datagrams.BUFFER_SIZE], Datagrams.BUFFER_SIZE,
 				remoteAddress, remotePort);
 		
 		frame.addWindowListener(new WindowAdapter() {
@@ -110,7 +130,7 @@ public class Talk implements ActionListener, Runnable {
 
 	@Override
 	public void run() {
-		DatagramPacket packetIn = DatagramSetup.newDatagramPacket();
+		DatagramPacket packetIn = Datagrams.newDatagramPacket();
 		
 		while (true) {
 			try {

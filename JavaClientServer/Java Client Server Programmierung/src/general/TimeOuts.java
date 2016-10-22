@@ -1,4 +1,4 @@
-package general.values;
+package general;
 
 public class TimeOuts {
 

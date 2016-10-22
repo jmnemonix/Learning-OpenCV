@@ -5,9 +5,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.Date;
 
-import experimente.echoserver.rcommand.infrastructure.AdvancedCommand;
-import general.values.DatagramSetup;
-import general.values.PortSetup;
+import general.Datagrams;
+import general.Ports;
 
 public class CommandServer {
 	private final String NAME = "cserver v0.1";
@@ -18,7 +17,7 @@ public class CommandServer {
 	private boolean lastCommand = false;
 	
 	public CommandServer() {
-		this(PortSetup.STD_PORT_3);
+		this(Ports.STD_PORT_3);
 	}
 
 	public CommandServer(int port) {
@@ -37,8 +36,8 @@ public class CommandServer {
 		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
-			DatagramPacket packetIn  = DatagramSetup.newDatagramPacket();
-			DatagramPacket packetOut = DatagramSetup.newDatagramPacket();
+			DatagramPacket packetIn  = Datagrams.newDatagramPacket();
+			DatagramPacket packetOut = Datagrams.newDatagramPacket();
 			
 			print("Server gestartet ...");
 			
