@@ -1,36 +1,37 @@
+package talk.setup;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class SetupData {
+public class Data {
 
-	private String myName = null;
-	private int myPort;
+	private String userName = null;
+	private int localPort;
 
 	private String remoteHost = null;
 	private int remotePort;
 
-	public SetupData() {
+	public Data() {
 		super();
 	}
-	public SetupData(String myName, int myPort, String remoteHost, int remotePort) {
+	public Data(String userName, int localPort, String remoteHost, int remotePort) {
 		super();
-		this.myName = myName;
-		this.myPort = myPort;
+		this.userName = userName;
+		this.localPort = localPort;
 		this.remoteHost = remoteHost;
 		this.remotePort = remotePort;
 	}
 
-	public String getMyName() {
-		return myName;
+	public String getUserName() {
+		return userName;
 	}
-	public void setMyName(String myName) {
-		this.myName = myName;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public int getMyPort() {
-		return myPort;
+	public int getLocalPort() {
+		return localPort;
 	}
-	public void setMyPort(int myPort) {
-		this.myPort = myPort;
+	public void setLocalPort(int localPort) {
+		this.localPort = localPort;
 	}
 	public String getRemoteHost() {
 		return remoteHost;
