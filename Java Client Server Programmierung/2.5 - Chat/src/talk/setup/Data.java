@@ -45,4 +45,26 @@ public class Data {
 	public void setRemotePort(int remotePort) {
 		this.remotePort = remotePort;
 	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data[");
+		
+		sb.append("userName: ");
+		sb.append( userName );
+		
+		sb.append(" localPort: ");
+		sb.append(  localPort );
+		
+		sb.append(" remoteHost: ");
+		sb.append(  remoteHost );
+		
+		sb.append(" remotePort: ");
+		sb.append(  remotePort );
+		
+		sb.append("]");
+		
+		return sb.toString();
+	}
 }

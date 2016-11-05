@@ -29,7 +29,7 @@ public class SetupFrame extends JFrame {
 		setupFiles = getListOfSetupFiles();
 		
 		for (File f : setupFiles) {
-			xmlToUse.addItem(f.getName());
+			xmlToUse.addItem(f.getPath());
 		}
 		
 		panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 2, 2));
@@ -45,14 +45,12 @@ public class SetupFrame extends JFrame {
 		panel.add(okButton);
 		
 		add(panel, BorderLayout.NORTH);
-		pack();
-		setVisible(true);
 	}
 	
 	
 	private List<File> getListOfSetupFiles() {
 		
-		File folder = new File("./");
+		File folder = new File("./data");
 
 		File[] listOfXML = folder.listFiles(
 			(dir, name) -> 
@@ -67,11 +65,19 @@ public class SetupFrame extends JFrame {
 	private void loadSetupFile() {
 		
 		String selectedItemName = (String) xmlToUse.getSelectedItem();
+		
 		File file = new File(selectedItemName);
 		Data data = JAXB.unmarshal( file, Data.class );
-		Talk.loadData(data);
+		Talk.start(data);
+		print(data.toString());
 		
 		setVisible(false);
 		dispose();
+	}
+	
+	private void print(String s) {
+		if(Talk.PRINT) {
+			System.out.println(s);
+		}
 	}
 }

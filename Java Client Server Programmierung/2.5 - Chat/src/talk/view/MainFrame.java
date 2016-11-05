@@ -67,7 +67,12 @@ public class MainFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		String message = input.getText();
-		Talk.sendMessage(message);
+		
+		if(Talk.sendMessage(message)) {
+			input.setText("");
+		} else {
+			appendText("FEHLER!!");
+		}
 
 		input.requestFocus();
 	}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <setupData>
-    <myName>TestUser_1</myName>
-    <myPort>40000</myPort>
+    <userName>TestUser_2</userName>
+    <localPort>50000</localPort>
     <remoteHost>localhost</remoteHost>
-    <remotePort>50000</remotePort>
+    <remotePort>40000</remotePort>
 </setupData>
