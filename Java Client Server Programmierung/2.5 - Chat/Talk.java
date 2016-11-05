@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.xml.bind.JAXB;
 
-import SetupData;
+//import SetupData;
 
 public class Talk implements ActionListener, Runnable {
 
@@ -66,7 +66,7 @@ public class Talk implements ActionListener, Runnable {
 //			throw new RuntimeException("Parameter Fehlen!");
 
 			try {
-				File file = new File( "data/kap_2.5_chat_setup.xml" );
+				File file = new File( "setup.xml" );
 				SetupData sdata = JAXB.unmarshal( file, SetupData.class );
 
 				user       = sdata.getMyName();
@@ -78,7 +78,7 @@ public class Talk implements ActionListener, Runnable {
 			}
 		}
 
-		InetAddress remoteAddress = Lookup.lookup(remoteHost);
+		InetAddress remoteAddress = InetAddress.getByName(remoteHost);
 
 		frame.setTitle("Talk - " + user);
 
