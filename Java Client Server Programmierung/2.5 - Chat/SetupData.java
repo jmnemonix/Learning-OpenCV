@@ -1,5 +1,3 @@
-package kapitel_2.u5_chat.xmlconfig;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -7,10 +5,10 @@ public class SetupData {
 
 	private String myName = null;
 	private int myPort;
-	
+
 	private String remoteHost = null;
 	private int remotePort;
-	
+
 	public SetupData() {
 		super();
 	}
@@ -21,7 +19,7 @@ public class SetupData {
 		this.remoteHost = remoteHost;
 		this.remotePort = remotePort;
 	}
-	
+
 	public String getMyName() {
 		return myName;
 	}

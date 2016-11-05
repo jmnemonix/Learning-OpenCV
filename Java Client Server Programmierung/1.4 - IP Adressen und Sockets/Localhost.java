@@ -1,5 +1,3 @@
-package kapitel_1.u4_IP_Adressen_Sockets;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
