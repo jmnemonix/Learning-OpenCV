@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-import general.Datagrams;
-import general.Ports;
-
 public class EchoServer {
 	/**
 	 * 
@@ -14,9 +11,11 @@ public class EchoServer {
 	 * 
 	 */
 	
+	private static final int BUFFER_SIZE = 508;
+	
 	public static void main(String[] args) {
 		
-		int port = Ports.STD_PORT_3;
+		int port = 50000;
 		
 		if (args.length > 0) {
 			port = Integer.parseInt(args[0]);
@@ -24,8 +23,8 @@ public class EchoServer {
 		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
-			DatagramPacket packetIn  = Datagrams.newDatagramPacket();
-			DatagramPacket packetOut = Datagrams.newDatagramPacket();
+			DatagramPacket packetIn  = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
+			DatagramPacket packetOut = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 			
 			System.out.println("(EchoServer) Server gestartet ...");
 			

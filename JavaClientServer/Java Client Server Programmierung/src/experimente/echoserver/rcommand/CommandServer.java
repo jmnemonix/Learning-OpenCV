@@ -5,10 +5,10 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.Date;
 
-import general.Datagrams;
-import general.Ports;
-
 public class CommandServer {
+
+	private static final int BUFFER_SIZE = 508;
+	
 	private final String NAME = "cserver v0.1";
 	
 	private int port = 1;
@@ -17,7 +17,7 @@ public class CommandServer {
 	private boolean lastCommand = false;
 	
 	public CommandServer() {
-		this(Ports.STD_PORT_3);
+		this(50000);
 	}
 
 	public CommandServer(int port) {
@@ -36,8 +36,8 @@ public class CommandServer {
 		
 		try ( DatagramSocket socket = new DatagramSocket(port) ) {
 			
-			DatagramPacket packetIn  = Datagrams.newDatagramPacket();
-			DatagramPacket packetOut = Datagrams.newDatagramPacket();
+			DatagramPacket packetIn  = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
+			DatagramPacket packetOut = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 			
 			print("Server gestartet ...");
 			

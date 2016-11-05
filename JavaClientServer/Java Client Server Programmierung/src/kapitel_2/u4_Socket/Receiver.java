@@ -5,16 +5,16 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import general.Datagrams;
-import general.Ports;
-
 public class Receiver {
+	
+	private static final int BUFFER_SIZE = 508;
 	
 	public static void main(String[] args) {
 		
-		int    port       = Ports.STD_PORT_3;
+		int    port       = 50000;
+		int    remotePort = 40000;
 		String remoteHost = "localhost";
-		int    remotePort = Ports.STD_PORT_1;
+		
 		
 		if ( args.length == 3 ){
 			port       = Integer.parseInt( args[0] );
@@ -28,7 +28,7 @@ public class Receiver {
 			
 			socket.connect(InetAddress.getByName(remoteHost), remotePort);
 			
-			DatagramPacket packet = new  DatagramPacket(new byte[Datagrams.BUFFER_SIZE], Datagrams.BUFFER_SIZE);
+			DatagramPacket packet = new  DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 			
 			while (true) {
 				

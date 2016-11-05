@@ -4,8 +4,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-import general.Datagrams;
-import general.TimeOuts;
 import kapitel_1.u4_IP_Adressen_Sockets.Lookup;
 
 public class EchoClient {
@@ -14,6 +12,9 @@ public class EchoClient {
 	 * Aufruf: java -cp bin EchoClient <hostname> <port> <Msg>
 	 * 
 	 */
+	
+	private static final int BUFFER_SIZE = 508;
+	
 	private static final String NAME = "EchoClient";
 	
 	public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class EchoClient {
 		
 		try ( DatagramSocket socket = new DatagramSocket() ) {
 			
-			socket.setSoTimeout(TimeOuts.T2K);
+			socket.setSoTimeout(2000);
 			
 			InetAddress addr = Lookup.lookup(host);
 			
@@ -38,7 +39,7 @@ public class EchoClient {
 			
 			socket.send(packetOut);
 			
-			DatagramPacket packetIn = Datagrams.newDatagramPacket();
+			DatagramPacket packetIn = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 			
 			socket.receive(packetIn);
 			

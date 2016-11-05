@@ -23,11 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.xml.bind.JAXB;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 
-import general.Datagrams;
-import general.Ports;
 import kapitel_1.u4_IP_Adressen_Sockets.Lookup;
 import kapitel_2.u5_chat.xmlconfig.SetupData;
 
@@ -37,9 +33,11 @@ public class Talk implements ActionListener, Runnable {
 	
 	// --- Networking ---
 	private String user;
-	private int    localPort  = Ports.STD_PORT_3;
+	private int    localPort  = 50000;
 	private String remoteHost;
-	private int    remotePort = Ports.STD_PORT_3;
+	private int    remotePort = 50000;
+
+	private static final int BUFFER_SIZE = 508;
 	
 	private DatagramSocket socket;
 	private DatagramPacket packetOut;
@@ -90,7 +88,7 @@ public class Talk implements ActionListener, Runnable {
 		socket = new DatagramSocket(localPort);
 		
 		packetOut = new DatagramPacket(
-				new byte[Datagrams.BUFFER_SIZE], Datagrams.BUFFER_SIZE,
+				new byte[BUFFER_SIZE], BUFFER_SIZE,
 				remoteAddress, remotePort);
 		
 		frame.addWindowListener(new WindowAdapter() {
@@ -130,7 +128,7 @@ public class Talk implements ActionListener, Runnable {
 
 	@Override
 	public void run() {
-		DatagramPacket packetIn = Datagrams.newDatagramPacket();
+		DatagramPacket packetIn = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 		
 		while (true) {
 			try {
