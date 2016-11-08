@@ -30,6 +30,7 @@ public class HelloResource {
 		return "<?xml version=\"1.0\"?><hello>Herzlich Willkommen!</hello>";
 	}
 	
+	@Path("/extended")
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getPlainMessageExtended() {
