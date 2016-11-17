@@ -11,12 +11,6 @@ var app = express();
 app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(bodyParser.json());
 
-/*
-app.get('/', function(req, res){
-  res.send('server is working');
-});
-*/
-
 // Routes
 app.use('/api', require('./routes/api'));
 
