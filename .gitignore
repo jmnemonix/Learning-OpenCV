@@ -68,3 +68,7 @@ OpenCV/C++/TutTut/*
 hs_err_pid*
 
 
+*.mp4
+*.mkv
+
+
