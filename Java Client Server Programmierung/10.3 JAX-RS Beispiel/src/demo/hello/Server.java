@@ -7,7 +7,7 @@ import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 
 /**
  * 
- * @author jano
+ * @author JanO
  *
  *  Test the server with;
  *  
